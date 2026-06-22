@@ -10,16 +10,41 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RecouvrementCreancesRouteImport } from './routes/recouvrement-creances'
+import { Route as ProspectsRouteImport } from './routes/prospects'
+import { Route as OperationsComplexesRouteImport } from './routes/operations-complexes'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ExpertisesRouteImport } from './routes/expertises'
+import { Route as CreationEntrepriseRouteImport } from './routes/creation-entreprise'
+import { Route as ContentieuxRouteImport } from './routes/contentieux'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConseilJuridiqueRouteImport } from './routes/conseil-juridique'
+import { Route as ConseilFiscalRouteImport } from './routes/conseil-fiscal'
 import { Route as CabinetRouteImport } from './routes/cabinet'
+import { Route as AdminFaqRouteImport } from './routes/admin-faq'
+import { Route as AdminActualitesRouteImport } from './routes/admin-actualites'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecouvrementCreancesRoute = RecouvrementCreancesRouteImport.update({
+  id: '/recouvrement-creances',
+  path: '/recouvrement-creances',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProspectsRoute = ProspectsRouteImport.update({
+  id: '/prospects',
+  path: '/prospects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OperationsComplexesRoute = OperationsComplexesRouteImport.update({
+  id: '/operations-complexes',
+  path: '/operations-complexes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -32,14 +57,49 @@ const ExpertisesRoute = ExpertisesRouteImport.update({
   path: '/expertises',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreationEntrepriseRoute = CreationEntrepriseRouteImport.update({
+  id: '/creation-entreprise',
+  path: '/creation-entreprise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContentieuxRoute = ContentieuxRouteImport.update({
+  id: '/contentieux',
+  path: '/contentieux',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConseilJuridiqueRoute = ConseilJuridiqueRouteImport.update({
+  id: '/conseil-juridique',
+  path: '/conseil-juridique',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConseilFiscalRoute = ConseilFiscalRouteImport.update({
+  id: '/conseil-fiscal',
+  path: '/conseil-fiscal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CabinetRoute = CabinetRouteImport.update({
   id: '/cabinet',
   path: '/cabinet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFaqRoute = AdminFaqRouteImport.update({
+  id: '/admin-faq',
+  path: '/admin-faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminActualitesRoute = AdminActualitesRouteImport.update({
+  id: '/admin-actualites',
+  path: '/admin-actualites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ActualitesRoute = ActualitesRouteImport.update({
@@ -56,29 +116,59 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/actualites': typeof ActualitesRoute
+  '/admin': typeof AdminRoute
+  '/admin-actualites': typeof AdminActualitesRoute
+  '/admin-faq': typeof AdminFaqRoute
   '/cabinet': typeof CabinetRoute
+  '/conseil-fiscal': typeof ConseilFiscalRoute
+  '/conseil-juridique': typeof ConseilJuridiqueRoute
   '/contact': typeof ContactRoute
+  '/contentieux': typeof ContentieuxRoute
+  '/creation-entreprise': typeof CreationEntrepriseRoute
   '/expertises': typeof ExpertisesRoute
   '/faq': typeof FaqRoute
+  '/operations-complexes': typeof OperationsComplexesRoute
+  '/prospects': typeof ProspectsRoute
+  '/recouvrement-creances': typeof RecouvrementCreancesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/actualites': typeof ActualitesRoute
+  '/admin': typeof AdminRoute
+  '/admin-actualites': typeof AdminActualitesRoute
+  '/admin-faq': typeof AdminFaqRoute
   '/cabinet': typeof CabinetRoute
+  '/conseil-fiscal': typeof ConseilFiscalRoute
+  '/conseil-juridique': typeof ConseilJuridiqueRoute
   '/contact': typeof ContactRoute
+  '/contentieux': typeof ContentieuxRoute
+  '/creation-entreprise': typeof CreationEntrepriseRoute
   '/expertises': typeof ExpertisesRoute
   '/faq': typeof FaqRoute
+  '/operations-complexes': typeof OperationsComplexesRoute
+  '/prospects': typeof ProspectsRoute
+  '/recouvrement-creances': typeof RecouvrementCreancesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/actualites': typeof ActualitesRoute
+  '/admin': typeof AdminRoute
+  '/admin-actualites': typeof AdminActualitesRoute
+  '/admin-faq': typeof AdminFaqRoute
   '/cabinet': typeof CabinetRoute
+  '/conseil-fiscal': typeof ConseilFiscalRoute
+  '/conseil-juridique': typeof ConseilJuridiqueRoute
   '/contact': typeof ContactRoute
+  '/contentieux': typeof ContentieuxRoute
+  '/creation-entreprise': typeof CreationEntrepriseRoute
   '/expertises': typeof ExpertisesRoute
   '/faq': typeof FaqRoute
+  '/operations-complexes': typeof OperationsComplexesRoute
+  '/prospects': typeof ProspectsRoute
+  '/recouvrement-creances': typeof RecouvrementCreancesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -86,38 +176,78 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/actualites'
+    | '/admin'
+    | '/admin-actualites'
+    | '/admin-faq'
     | '/cabinet'
+    | '/conseil-fiscal'
+    | '/conseil-juridique'
     | '/contact'
+    | '/contentieux'
+    | '/creation-entreprise'
     | '/expertises'
     | '/faq'
+    | '/operations-complexes'
+    | '/prospects'
+    | '/recouvrement-creances'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/actualites'
+    | '/admin'
+    | '/admin-actualites'
+    | '/admin-faq'
     | '/cabinet'
+    | '/conseil-fiscal'
+    | '/conseil-juridique'
     | '/contact'
+    | '/contentieux'
+    | '/creation-entreprise'
     | '/expertises'
     | '/faq'
+    | '/operations-complexes'
+    | '/prospects'
+    | '/recouvrement-creances'
     | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/actualites'
+    | '/admin'
+    | '/admin-actualites'
+    | '/admin-faq'
     | '/cabinet'
+    | '/conseil-fiscal'
+    | '/conseil-juridique'
     | '/contact'
+    | '/contentieux'
+    | '/creation-entreprise'
     | '/expertises'
     | '/faq'
+    | '/operations-complexes'
+    | '/prospects'
+    | '/recouvrement-creances'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ActualitesRoute: typeof ActualitesRoute
+  AdminRoute: typeof AdminRoute
+  AdminActualitesRoute: typeof AdminActualitesRoute
+  AdminFaqRoute: typeof AdminFaqRoute
   CabinetRoute: typeof CabinetRoute
+  ConseilFiscalRoute: typeof ConseilFiscalRoute
+  ConseilJuridiqueRoute: typeof ConseilJuridiqueRoute
   ContactRoute: typeof ContactRoute
+  ContentieuxRoute: typeof ContentieuxRoute
+  CreationEntrepriseRoute: typeof CreationEntrepriseRoute
   ExpertisesRoute: typeof ExpertisesRoute
   FaqRoute: typeof FaqRoute
+  OperationsComplexesRoute: typeof OperationsComplexesRoute
+  ProspectsRoute: typeof ProspectsRoute
+  RecouvrementCreancesRoute: typeof RecouvrementCreancesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -128,6 +258,27 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recouvrement-creances': {
+      id: '/recouvrement-creances'
+      path: '/recouvrement-creances'
+      fullPath: '/recouvrement-creances'
+      preLoaderRoute: typeof RecouvrementCreancesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prospects': {
+      id: '/prospects'
+      path: '/prospects'
+      fullPath: '/prospects'
+      preLoaderRoute: typeof ProspectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/operations-complexes': {
+      id: '/operations-complexes'
+      path: '/operations-complexes'
+      fullPath: '/operations-complexes'
+      preLoaderRoute: typeof OperationsComplexesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -144,6 +295,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExpertisesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/creation-entreprise': {
+      id: '/creation-entreprise'
+      path: '/creation-entreprise'
+      fullPath: '/creation-entreprise'
+      preLoaderRoute: typeof CreationEntrepriseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contentieux': {
+      id: '/contentieux'
+      path: '/contentieux'
+      fullPath: '/contentieux'
+      preLoaderRoute: typeof ContentieuxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -151,11 +316,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conseil-juridique': {
+      id: '/conseil-juridique'
+      path: '/conseil-juridique'
+      fullPath: '/conseil-juridique'
+      preLoaderRoute: typeof ConseilJuridiqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conseil-fiscal': {
+      id: '/conseil-fiscal'
+      path: '/conseil-fiscal'
+      fullPath: '/conseil-fiscal'
+      preLoaderRoute: typeof ConseilFiscalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cabinet': {
       id: '/cabinet'
       path: '/cabinet'
       fullPath: '/cabinet'
       preLoaderRoute: typeof CabinetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-faq': {
+      id: '/admin-faq'
+      path: '/admin-faq'
+      fullPath: '/admin-faq'
+      preLoaderRoute: typeof AdminFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-actualites': {
+      id: '/admin-actualites'
+      path: '/admin-actualites'
+      fullPath: '/admin-actualites'
+      preLoaderRoute: typeof AdminActualitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/actualites': {
@@ -178,12 +378,32 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ActualitesRoute: ActualitesRoute,
+  AdminRoute: AdminRoute,
+  AdminActualitesRoute: AdminActualitesRoute,
+  AdminFaqRoute: AdminFaqRoute,
   CabinetRoute: CabinetRoute,
+  ConseilFiscalRoute: ConseilFiscalRoute,
+  ConseilJuridiqueRoute: ConseilJuridiqueRoute,
   ContactRoute: ContactRoute,
+  ContentieuxRoute: ContentieuxRoute,
+  CreationEntrepriseRoute: CreationEntrepriseRoute,
   ExpertisesRoute: ExpertisesRoute,
   FaqRoute: FaqRoute,
+  OperationsComplexesRoute: OperationsComplexesRoute,
+  ProspectsRoute: ProspectsRoute,
+  RecouvrementCreancesRoute: RecouvrementCreancesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { sendContactEmailAndSave } from "@/lib/contact.server";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+const [loading, setLoading] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,6 +40,56 @@ function ContactPage() {
             Décrivez-nous votre situation. Un expert du cabinet vous recontacte rapidement pour
             convenir d'un premier échange confidentiel.
           </p>
+          <section className="section-pad bg-secondary">
+  <div className="container-page">
+    <div className="mx-auto max-w-3xl text-center">
+      <span className="eyebrow mx-auto justify-center">
+        Pourquoi nous contacter ?
+      </span>
+
+  <h2 className="mt-5 font-serif text-4xl font-semibold text-ink">
+    Une réponse rapide et confidentielle.
+  </h2>
+
+  <p className="mt-6 text-muted-foreground">
+    Chaque demande est examinée avec attention par notre équipe.
+    Nous vous apportons des réponses adaptées à votre situation
+    dans les meilleurs délais.
+  </p>
+</div>
+
+<div className="mt-12 grid gap-6 md:grid-cols-3">
+  <div className="rounded-2xl bg-background p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Confidentialité
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Toutes les informations communiquées restent strictement confidentielles.
+    </p>
+  </div>
+
+  <div className="rounded-2xl bg-background p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Réactivité
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Nous répondons rapidement à vos demandes.
+    </p>
+  </div>
+
+  <div className="rounded-2xl bg-background p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Accompagnement
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Des solutions adaptées à vos besoins et à vos objectifs.
+    </p>
+  </div>
+</div>
+
+  </div>
+</section>
+
         </div>
       </section>
 
@@ -45,12 +97,16 @@ function ContactPage() {
         <div className="container-page grid gap-12 lg:grid-cols-12">
           <aside className="lg:col-span-5 space-y-5">
             {[
-              { icon: Phone, label: "Téléphone", value: "+225 00 00 00 00" },
-              { icon: MessageCircle, label: "WhatsApp", value: "+225 00 00 00 00" },
-              { icon: Mail, label: "E-mail", value: "contact@juris-consultant.com" },
-              { icon: MapPin, label: "Adresse", value: "Abidjan, Côte d'Ivoire" },
-              { icon: Clock, label: "Horaires", value: "Lun – Ven : 08h00 – 18h00" },
-            ].map((i) => (
+  { icon: Phone, label: "Téléphone", value: "+225 07 89 85 36 07" },
+  { icon: MessageCircle, label: "WhatsApp", value: "+225 07 89 85 36 07" },
+  { icon: Mail, label: "E-mail", value: "contact" },
+  { icon: MapPin, label: "Adresse", value: "Abidjan, Côte d'Ivoire" },
+  {
+    icon: Clock,
+    label: "Horaires",
+    value: "Lundi - Vendredi : 08h00 - 18h00 | Samedi : Sur rendez-vous",
+  },
+].map((i) => (
               <div
                 key={i.label}
                 className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6"
@@ -71,10 +127,32 @@ function ContactPage() {
           <div className="lg:col-span-7">
             <form
               className="rounded-2xl border border-border bg-card p-8 md:p-10"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+             onSubmit={async (e) => {
+  e.preventDefault();
+
+  try {
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+
+    await sendContactEmailAndSave({
+      data: {
+        name: String(formData.get("name") || ""),
+        email: String(formData.get("email") || ""),
+        phone: String(formData.get("phone") || ""),
+        subject: String(formData.get("subject") || ""),
+        message: String(formData.get("message") || ""),
+      },
+    });
+
+    setSent(true);
+  } catch (error) {
+    console.error(error);
+    alert("Erreur lors de l'envoi du message.");
+  } finally {
+    setLoading(false);
+  }
+}}
             >
               {sent ? (
                 <div className="py-10 text-center">
@@ -107,9 +185,14 @@ function ContactPage() {
                       className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
                     />
                   </div>
-                  <button type="submit" className="btn-primary mt-2 w-full sm:w-fit">
-                    Envoyer ma demande <Send className="h-4 w-4" />
-                  </button>
+                 <button
+  type="submit"
+  disabled={loading}
+  className="btn-primary mt-2 w-full sm:w-fit"
+>
+  {loading ? "Envoi en cours..." : "Envoyer ma demande"}
+  <Send className="h-4 w-4" />
+</button>
                 </div>
               )}
             </form>

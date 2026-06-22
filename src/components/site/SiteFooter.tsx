@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Scale, Mail, Phone, MapPin } from "lucide-react";
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp, FaTiktok, FaYoutube, } from "react-icons/fa";
 
 export function SiteFooter() {
   return (
@@ -41,13 +42,64 @@ export function SiteFooter() {
             Contact
           </h4>
           <ul className="mt-5 space-y-3 text-sm text-background/80">
-            <li className="flex items-start gap-2.5"><Phone className="mt-0.5 h-4 w-4 text-primary-soft" /> +225 00 00 00 00</li>
+            <li className="flex items-start gap-2.5"><Phone className="mt-0.5 h-4 w-4 text-primary-soft" /> +225 07 89 85 36 07</li>
             <li className="flex items-start gap-2.5"><Mail className="mt-0.5 h-4 w-4 text-primary-soft" /> contact@juris-consultant.com</li>
             <li className="flex items-start gap-2.5"><MapPin className="mt-0.5 h-4 w-4 text-primary-soft" /> Abidjan, Côte d'Ivoire</li>
           </ul>
         </div>
       </div>
 
+<div className="mt-8 ml-7">
+  <h4 className="text-xs font-semibold uppercase tracking-[0.22em] text-background/60">
+   Suivez JURIS-CONSULTANT
+  </h4>
+
+  <div className="mt-4 flex items-center gap-4">
+    <a
+      href="https://facebook.com/jurisconsultant"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-full border border-background/20 p-2 text-background/70 transition-all hover:border-primary hover:text-primary"
+    >
+      <FaFacebookF className="h-5 w-5" />
+    </a>
+
+    <a
+      href="https://linkedin.com/company/jurisconsultant"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-full border border-background/20 p-2 text-background/70 transition-all hover:border-primary hover:text-primary"
+    >
+     <FaLinkedinIn className="h-5 w-5" />
+    </a>
+
+    <a
+      href="https://wa.me/2250565623610"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-full border border-background/20 p-2 text-background/70 transition-all hover:border-primary hover:text-primary"
+    >
+     <FaWhatsapp className="h-5 w-5" />
+    </a>
+    <a
+  href="https://www.tiktok.com/@jurisconsultant"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="rounded-full border border-background/20 p-2 text-background/70 transition-all hover:border-primary hover:text-primary"
+>
+  <FaTiktok className="h-5 w-5" />
+</a>
+
+<a
+  href="https://www.youtube.com/@jurisconsultant"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="rounded-full border border-background/20 p-2 text-background/70 transition-all hover:border-primary hover:text-primary"
+>
+  <FaYoutube className="h-5 w-5" />
+</a>
+  </div>
+</div>
       <div className="border-t border-background/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-background/50 md:flex-row">
           <p>© {new Date().getFullYear()} JURIS-CONSULTANT. Tous droits réservés.</p>

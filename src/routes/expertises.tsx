@@ -19,36 +19,41 @@ export const Route = createFileRoute("/expertises")({
   }),
   component: ExpertisesPage,
 });
-
 const blocks = [
   {
     icon: Scale,
     title: "Conseil Juridique",
+    href: "/conseil-juridique",
     items: ["Droit des sociétés", "Gouvernance", "Contrats", "Formalités juridiques"],
   },
   {
     icon: Calculator,
     title: "Conseil Fiscal",
+    href: "/conseil-fiscal",
     items: ["Déclarations fiscales", "Contrôle fiscal", "Audit fiscal", "Contentieux fiscal"],
   },
   {
     icon: Briefcase,
-    title: "Droit du Travail",
-    items: ["Contrats", "Licenciements", "Litiges sociaux"],
+    title: "Opérations Complexes",
+    href: "/operations-complexes",
+    items: ["Fusions", "Acquisitions d'entreprises", "Offres publiques d'acquisition (OPA)"],
   },
   {
     icon: HandCoins,
     title: "Recouvrement",
+    href: "/recouvrement-creances",
     items: ["Mise en demeure", "Négociation", "Procédures judiciaires"],
   },
   {
     icon: Rocket,
     title: "Création d'Entreprise",
+    href: "/creation-entreprise",
     items: ["Choix de la structure", "Formalités constitutives", "Conseil au porteur de projet"],
   },
   {
     icon: Gavel,
     title: "Contentieux",
+    href: "/contentieux",
     items: ["Stratégie", "Représentation", "Négociation amiable"],
   },
 ];
@@ -74,14 +79,18 @@ function ExpertisesPage() {
       <section className="section-pad">
         <div className="container-page grid gap-6 md:grid-cols-2">
           {blocks.map((b) => (
-            <article
-              key={b.title}
-              className="rounded-2xl border border-border bg-card p-10 transition-shadow hover:shadow-[var(--shadow-soft)]"
-            >
+  <Link
+    key={b.title}
+    to={b.href}
+    className="group rounded-2xl border border-border bg-card p-10 transition-all hover:border-primary/40 hover:shadow-[var(--shadow-soft)]"
+  >
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary">
                 <b.icon className="h-6 w-6" strokeWidth={1.6} />
               </span>
               <h2 className="mt-6 font-serif text-3xl font-semibold text-ink">{b.title}</h2>
+              <p className="mt-3 text-sm font-semibold uppercase tracking-wider text-primary">
+  En savoir plus →
+</p>
               <ul className="mt-6 space-y-3">
                 {b.items.map((i) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-foreground">
@@ -90,7 +99,7 @@ function ExpertisesPage() {
                   </li>
                 ))}
               </ul>
-            </article>
+            </Link>
           ))}
         </div>
       </section>

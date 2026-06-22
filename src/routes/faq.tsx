@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { getFaq } from "@/lib/admin.server";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import {
@@ -7,29 +9,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const faq = [
-  {
-    q: "Comment créer une entreprise ?",
-    a: "Nous vous accompagnons du choix de la forme juridique aux formalités constitutives : rédaction des statuts, immatriculation, conseils fiscaux et sociaux à la création.",
-  },
-  {
-    q: "Comment gérer un contrôle fiscal ?",
-    a: "Nous vous assistons à chaque étape : préparation des pièces, échanges avec l'administration, contestation éventuelle des redressements et défense de vos droits.",
-  },
-  {
-    q: "Comment recouvrer une créance ?",
-    a: "Notre démarche combine relance amiable, mise en demeure structurée et, si nécessaire, procédures judiciaires (injonction de payer, référé-provision, saisies).",
-  },
-  {
-    q: "Quels documents pour une mise en conformité ?",
-    a: "Cela dépend de votre activité : statuts à jour, registres obligatoires, contrats-types, politiques internes, déclarations fiscales et sociales. Nous établissons un diagnostic personnalisé.",
-  },
-  {
-    q: "Comment rédiger un contrat sécurisé ?",
-    a: "Un contrat solide identifie clairement les parties, les obligations, les modalités d'exécution, les garanties, les sanctions et la juridiction compétente. Nous rédigeons et auditons vos contrats.",
-  },
-];
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -44,25 +23,17 @@ export const Route = createFileRoute("/faq")({
       { property: "og:url", content: "/faq" },
     ],
     links: [{ rel: "canonical", href: "/faq" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faq.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      },
-    ],
   }),
   component: FaqPage,
 });
 
 function FaqPage() {
+  const [faq, setFaq] = useState<any[]>([]);
+
+  useEffect(() => {
+    getFaq({}).then(setFaq).catch(() => {});
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -82,18 +53,24 @@ function FaqPage() {
 
       <section className="section-pad">
         <div className="container-page max-w-3xl">
-          <Accordion type="single" collapsible className="w-full">
-            {faq.map((f, i) => (
-              <AccordionItem key={f.q} value={`item-${i}`} className="border-border">
-                <AccordionTrigger className="text-left font-serif text-xl text-ink hover:text-primary">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-base leading-relaxed text-muted-foreground">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          {faq.length === 0 ? (
+            <p className="py-12 text-center text-muted-foreground">
+              Aucune question pour le moment.
+            </p>
+          ) : (
+            <Accordion type="single" collapsible className="w-full">
+              {faq.map((f, i) => (
+                <AccordionItem key={f.id} value={f.id} className="border-border">
+                  <AccordionTrigger className="text-left font-serif text-xl text-ink hover:text-primary">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-base leading-relaxed text-muted-foreground">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          )}
 
           <div className="mt-14 rounded-2xl border border-border bg-secondary p-8 text-center">
             <p className="font-serif text-2xl text-ink">Une question qui n'apparaît pas&nbsp;?</p>

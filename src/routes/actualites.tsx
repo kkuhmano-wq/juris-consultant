@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
+import { getPosts } from "@/lib/admin.server";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
@@ -19,7 +21,7 @@ export const Route = createFileRoute("/actualites")({
   component: ActualitesPage,
 });
 
-const categories = [
+const defaultCategories = [
   "Fiscalité",
   "Droit des affaires",
   "Droit du travail",
@@ -27,51 +29,30 @@ const categories = [
   "Veille réglementaire",
 ];
 
-const posts = [
-  {
-    cat: "Fiscalité",
-    title: "Contrôle fiscal : les bons réflexes pour le préparer sereinement.",
-    date: "12 juin 2026",
-    excerpt:
-      "Les étapes essentielles pour anticiper un contrôle fiscal et sécuriser vos échanges avec l'administration.",
-  },
-  {
-    cat: "Droit des affaires",
-    title: "Pacte d'associés : pourquoi le rédiger dès la création de la société.",
-    date: "28 mai 2026",
-    excerpt:
-      "Un pacte solide prévient la majorité des conflits entre associés. Voici les clauses incontournables.",
-  },
-  {
-    cat: "Droit du travail",
-    title: "Rupture conventionnelle : sécuriser la procédure côté employeur.",
-    date: "10 mai 2026",
-    excerpt:
-      "Conditions, formalisme et risques contentieux : ce qu'il faut maîtriser avant de signer.",
-  },
-  {
-    cat: "Conseils pratiques",
-    title: "Recouvrement amiable : la lettre de mise en demeure qui fonctionne.",
-    date: "22 avril 2026",
-    excerpt:
-      "Structure, ton, délais : nos recommandations pour maximiser vos chances de paiement rapide.",
-  },
-  {
-    cat: "Veille réglementaire",
-    title: "Nouvelles obligations déclaratives : ce qui change pour les PME.",
-    date: "5 avril 2026",
-    excerpt:
-      "Synthèse des dernières évolutions et de leur impact opérationnel pour les dirigeants.",
-  },
-  {
-    cat: "Fiscalité",
-    title: "Optimisation fiscale ou évasion : tracer la ligne en toute sécurité.",
-    date: "18 mars 2026",
-    excerpt: "Une optimisation efficace s'inscrit dans la conformité. Notre méthodologie.",
-  },
-];
-
 function ActualitesPage() {
+  const [posts, setPosts] = useState<any[]>([]);
+  const [activeCat, setActiveCat] = useState<string | null>(null);
+
+  useEffect(() => {
+    getPosts({}).then(setPosts).catch(() => {});
+  }, []);
+
+  const categories = [...new Set([...defaultCategories, ...posts.map((p) => p.cat)])];
+
+  const filtered = activeCat
+    ? posts.filter((p) => p.cat === activeCat)
+    : posts;
+
+  const months = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+  ];
+
+  function formatDate(dateStr: string) {
+    const d = new Date(dateStr);
+    return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -83,10 +64,25 @@ function ActualitesPage() {
             Analyses, conseils et veille juridique &amp; fiscale.
           </h1>
           <div className="mt-10 flex flex-wrap gap-2">
+            <button
+              onClick={() => setActiveCat(null)}
+              className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                !activeCat
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-background text-foreground hover:border-primary hover:text-primary"
+              }`}
+            >
+              Toutes
+            </button>
             {categories.map((c) => (
               <button
                 key={c}
-                className="rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:border-primary hover:text-primary"
+                onClick={() => setActiveCat(c)}
+                className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                  activeCat === c
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-background text-foreground hover:border-primary hover:text-primary"
+                }`}
               >
                 {c}
               </button>
@@ -97,24 +93,30 @@ function ActualitesPage() {
 
       <section className="section-pad">
         <div className="container-page grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p) => (
-            <article
-              key={p.title}
-              className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
-            >
-              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary">
-                {p.cat}
-              </span>
-              <h2 className="mt-4 font-serif text-2xl font-semibold leading-snug text-ink">
-                {p.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.excerpt}</p>
-              <div className="mt-6 flex items-center justify-between border-t border-border pt-5 text-xs text-muted-foreground">
-                <span>{p.date}</span>
-                <span className="font-semibold text-primary group-hover:underline">Lire →</span>
-              </div>
-            </article>
-          ))}
+          {filtered.length === 0 ? (
+            <div className="col-span-full py-20 text-center text-muted-foreground">
+              Aucun article pour le moment.
+            </div>
+          ) : (
+            filtered.map((p) => (
+              <article
+                key={p.id}
+                className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
+              >
+                <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary">
+                  {p.cat}
+                </span>
+                <h2 className="mt-4 font-serif text-2xl font-semibold leading-snug text-ink">
+                  {p.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.excerpt}</p>
+                <div className="mt-6 flex items-center justify-between border-t border-border pt-5 text-xs text-muted-foreground">
+                  <span>{p.date ? formatDate(p.date) : "—"}</span>
+                  <span className="font-semibold text-primary group-hover:underline">Lire →</span>
+                </div>
+              </article>
+            ))
+          )}
         </div>
       </section>
 

@@ -54,10 +54,40 @@ function CabinetPage() {
           loading="lazy"
           className="h-72 w-full object-cover md:h-96"
         />
-      </section>
+     </section>
 
-      <section className="section-pad">
-        <div className="container-page grid gap-10 md:grid-cols-2">
+
+<section className="section-pad">
+  <div className="container-page max-w-4xl">
+    <span className="eyebrow">Notre Histoire</span>
+
+<h2 className="mt-5 font-serif text-4xl font-semibold text-ink md:text-5xl">
+  Une ambition : rendre le droit et la fiscalité accessibles, stratégiques et utiles.
+</h2>
+
+<p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+  JURIS-CONSULTANT est né de la volonté d'accompagner les entreprises,
+  commerçants, investisseurs et travailleurs dans un environnement juridique
+  et fiscal de plus en plus complexe.
+</p>
+
+<p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+  Notre conviction est simple : chaque décision juridique ou fiscale doit
+  contribuer à la sécurité, à la croissance et à la pérennité des activités
+  de nos clients.
+</p>
+
+<p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+  Depuis sa création, le cabinet s'engage à fournir des conseils fiables,
+  pratiques et adaptés aux réalités économiques locales tout en respectant
+  les meilleures pratiques professionnelles.
+</p>
+
+  </div>
+</section>
+
+<section className="section-pad">
+  <div className="container-page grid gap-10 md:grid-cols-2">
           <div className="rounded-2xl border border-border bg-card p-10">
             <span className="eyebrow">Mission</span>
             <h2 className="mt-5 font-serif text-3xl font-semibold text-ink">
@@ -98,11 +128,83 @@ function CabinetPage() {
                 <p className="mt-5 font-serif text-lg font-semibold text-ink">{v.label}</p>
               </li>
             ))}
-          </ul>
-        </div>
-      </section>
+         </ul>
+</div>
+</section>
 
-      <section className="section-pad">
+
+<section className="section-pad">
+  <div className="container-page">
+    <div className="mx-auto max-w-2xl text-center">
+      <span className="eyebrow mx-auto justify-center">
+        Nos Engagements
+      </span>
+
+  <h2 className="mt-5 font-serif text-4xl font-semibold text-ink md:text-5xl">
+    Ce que nos clients peuvent attendre de nous.
+  </h2>
+</div>
+
+<div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="rounded-2xl border border-border bg-card p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Écoute active
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Comprendre avant de conseiller.
+    </p>
+  </div>
+
+  <div className="rounded-2xl border border-border bg-card p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Réactivité
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Répondre rapidement à vos besoins.
+    </p>
+  </div>
+
+  <div className="rounded-2xl border border-border bg-card p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Confidentialité
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Protection rigoureuse de vos informations.
+    </p>
+  </div>
+
+  <div className="rounded-2xl border border-border bg-card p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Excellence
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Recherche permanente de la qualité.
+    </p>
+  </div>
+
+  <div className="rounded-2xl border border-border bg-card p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Accompagnement
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Un suivi à chaque étape.
+    </p>
+  </div>
+
+  <div className="rounded-2xl border border-border bg-card p-8">
+    <h3 className="font-serif text-xl font-semibold text-ink">
+      Solutions concrètes
+    </h3>
+    <p className="mt-3 text-muted-foreground">
+      Des recommandations utiles et applicables.
+    </p>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<section className="section-pad">
         <div className="container-page max-w-3xl">
           <span className="eyebrow">Notre approche</span>
           <h2 className="mt-5 font-serif text-4xl font-semibold text-ink md:text-5xl">
@@ -152,7 +254,32 @@ function CabinetPage() {
         </div>
       </section>
 
-      <SiteFooter />
+<section className="section-pad">
+  <div className="container-page">
+    <div className="rounded-3xl bg-[var(--gradient-ink)] p-12 text-center">
+      <h2 className="font-serif text-4xl font-semibold text-background">
+        Construisons ensemble la sécurité de vos projets.
+      </h2>
+
+  <p className="mt-5 max-w-2xl mx-auto text-background/80">
+    Que vous soyez entrepreneur, commerçant, investisseur ou travailleur,
+    JURIS-CONSULTANT vous accompagne dans vos décisions juridiques et fiscales.
+  </p>
+
+  <a
+    href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-primary mt-8 inline-flex"
+  >
+    Prendre rendez-vous
+  </a>
+</div>
+
+  </div>
+</section>
+
+<SiteFooter />
     </div>
   );
 }

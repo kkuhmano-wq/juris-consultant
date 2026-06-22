@@ -24,6 +24,7 @@ export function SiteHeader() {
           <span className="flex flex-col leading-tight">
             <span className="font-serif text-lg font-semibold tracking-tight text-ink">
               JURIS-CONSULTANT
+
             </span>
             <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               Conseil Juridique &amp; Fiscal

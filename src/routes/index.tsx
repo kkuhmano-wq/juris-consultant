@@ -3,7 +3,7 @@ import {
   ArrowRight,
   Scale,
   Calculator,
-  Briefcase,
+  Building2,
   HandCoins,
   Rocket,
   Gavel,
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
 const expertises = [
   { icon: Scale, title: "Conseil Juridique", desc: "Sécurisation des activités et assistance juridique." },
   { icon: Calculator, title: "Conseil Fiscal", desc: "Conformité et optimisation fiscale." },
-  { icon: Briefcase, title: "Droit du Travail", desc: "Gestion des relations employeurs-salariés." },
+  { icon: Building2, title: "Opérations Complexes", desc: "Fusions, acquisitions, restructurations et ingénierie juridique." },
   { icon: HandCoins, title: "Recouvrement de Créances", desc: "Protection et récupération des créances." },
   { icon: Rocket, title: "Création d'Entreprise", desc: "Accompagnement des porteurs de projets." },
   { icon: Gavel, title: "Contentieux", desc: "Assistance et représentation devant les juridictions." },
@@ -62,10 +62,10 @@ const method = [
 ];
 
 const stats = [
-  "Accompagnement personnalisé",
-  "Réactivité garantie",
-  "Confidentialité absolue",
-  "Expertise multidisciplinaire",
+ "+100 dossiers accompagnés",
+ "+50 entreprises conseillées",
+ "100% confidentialité",
+ "Réponse sous 24h",
 ];
 
 function HomePage() {
@@ -80,8 +80,8 @@ function HomePage() {
           <div className="lg:col-span-7">
             <span className="eyebrow">Cabinet de Conseil Juridique &amp; Fiscal</span>
             <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] text-ink md:text-6xl lg:text-7xl">
-              Votre partenaire stratégique en{" "}
-              <span className="italic text-primary">conseil juridique et fiscal</span>.
+              Sécurisez vos activités. Optimisez vos décisions.{" "}
+              <span className="italic text-primary">Défendez vos intérêts.</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
               JURIS-CONSULTANT accompagne les entreprises, commerçants, travailleurs et investisseurs
@@ -89,9 +89,14 @@ function HomePage() {
               et fiscales.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Prendre rendez-vous <ArrowRight className="h-4 w-4" />
-              </Link>
+             <a
+  href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-primary"
+>
+  Prendre rendez-vous <ArrowRight className="h-4 w-4" />
+</a>
               <Link to="/expertises" className="btn-outline">
                 Découvrir nos expertises
               </Link>
@@ -143,21 +148,42 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {expertises.map((e) => (
-              <article
-                key={e.title}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/40 hover:shadow-[var(--shadow-soft)]"
-              >
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary">
-                  <e.icon className="h-6 w-6" strokeWidth={1.6} />
-                </span>
-                <h3 className="mt-6 font-serif text-2xl font-semibold text-ink">{e.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.desc}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-                  En savoir plus <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </span>
-              </article>
-            ))}
+           {expertises.map((e) => (
+  <Link
+    key={e.title}
+    to={
+      e.title === "Conseil Juridique"
+        ? "/conseil-juridique"
+        : e.title === "Conseil Fiscal"
+        ? "/conseil-fiscal"
+        : e.title === "Opérations Complexes"
+        ? "/operations-complexes"
+        : e.title === "Recouvrement de Créances"
+        ? "/recouvrement-creances"
+        : e.title === "Création d'Entreprise"
+        ? "/creation-entreprise"
+        : "/contentieux"
+    }
+    className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/40 hover:shadow-[var(--shadow-soft)]"
+  >
+    <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary">
+      <e.icon className="h-6 w-6" strokeWidth={1.6} />
+    </span>
+
+    <h3 className="mt-6 font-serif text-2xl font-semibold text-ink">
+      {e.title}
+    </h3>
+
+    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+      {e.desc}
+    </p>
+
+    <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+      En savoir plus
+      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+    </span>
+  </Link>
+))}
           </div>
         </div>
       </section>
