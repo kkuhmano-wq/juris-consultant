@@ -3,6 +3,8 @@ import { z } from "zod";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
+import { supabase, isDbConnected, generateId } from "./db.server";
+import type { Post, FaqEntry } from "./db.server";
 
 const DATA_DIR = join(process.cwd(), "data");
 const POSTS_FILE = join(DATA_DIR, "posts.json");
@@ -12,23 +14,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin";
 
 const sessions = new Map<string, number>();
 
-type Post = {
-  id: string;
-  cat: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  content: string;
-  createdAt: string;
-};
-
-type FaqEntry = {
-  id: string;
-  q: string;
-  a: string;
-  order: number;
-  createdAt: string;
-};
+// ─── JSON file helpers (fallback) ────────────────────
 
 async function ensureDataDir() {
   if (!existsSync(DATA_DIR)) {
@@ -53,15 +39,11 @@ async function writeJSON<T>(file: string, data: T[]) {
   await writeFile(file, JSON.stringify(data, null, 2), "utf-8");
 }
 
-function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-}
+// ─── Auth ───────────────────────────────────────────
 
 function verifyToken(token: string): boolean {
   return sessions.has(token);
 }
-
-// ─── Auth ───────────────────────────────────────────
 
 export const login = createServerFn({ method: "POST" })
   .validator(z.object({ password: z.string() }))
@@ -91,26 +73,76 @@ export const requireAuth = createServerFn({ method: "POST" })
 
 export const getPosts = createServerFn({ method: "GET" })
   .handler(async () => {
+    if (isDbConnected()) {
+      const { data, error } = await supabase!
+        .from("posts")
+        .select("*")
+        .order("date", { ascending: false });
+      if (error) throw error;
+      return (data || []) as Post[];
+    }
     const posts = await readJSON<Post>(POSTS_FILE);
-    return posts.sort((a, b) => new Date(b.date || b.createdAt).getTime() - new Date(a.date || a.createdAt).getTime());
+    return posts.sort(
+      (a, b) =>
+        new Date(b.date || b.created_at).getTime() -
+        new Date(a.date || a.created_at).getTime()
+    );
   });
 
 export const savePost = createServerFn({ method: "POST" })
-  .validator(z.object({
-    token: z.string(),
-    id: z.string().optional(),
-    cat: z.string().min(1),
-    title: z.string().min(1),
-    date: z.string().min(1),
-    excerpt: z.string().min(1),
-    content: z.string().optional().default(""),
-  }))
+  .validator(
+    z.object({
+      token: z.string(),
+      id: z.string().optional(),
+      cat: z.string().min(1),
+      title: z.string().min(1),
+      date: z.string().min(1),
+      excerpt: z.string().min(1),
+      content: z.string().optional().default(""),
+    })
+  )
   .handler(async ({ data }) => {
-    if (!verifyToken(data.token)) return { success: false, error: "Non authentifié" };
+    if (!verifyToken(data.token))
+      return { success: false, error: "Non authentifié" };
+
+    if (isDbConnected()) {
+      if (data.id) {
+        const { error } = await supabase!
+          .from("posts")
+          .update({
+            cat: data.cat,
+            title: data.title,
+            date: data.date,
+            excerpt: data.excerpt,
+            content: data.content,
+          })
+          .eq("id", data.id);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase!.from("posts").insert({
+          id: generateId(),
+          cat: data.cat,
+          title: data.title,
+          date: data.date,
+          excerpt: data.excerpt,
+          content: data.content || "",
+        });
+        if (error) throw error;
+      }
+      return { success: true };
+    }
+
     const posts = await readJSON<Post>(POSTS_FILE);
     if (data.id && posts.find((p) => p.id === data.id)) {
       const idx = posts.findIndex((p) => p.id === data.id);
-      posts[idx] = { ...posts[idx], ...data, token: undefined };
+      posts[idx] = {
+        ...posts[idx],
+        cat: data.cat,
+        title: data.title,
+        date: data.date,
+        excerpt: data.excerpt,
+        content: data.content || "",
+      };
     } else {
       posts.push({
         id: generateId(),
@@ -119,7 +151,7 @@ export const savePost = createServerFn({ method: "POST" })
         date: data.date,
         excerpt: data.excerpt,
         content: data.content || "",
-        createdAt: new Date().toISOString(),
+        created_at: new Date().toISOString(),
       });
     }
     await writeJSON(POSTS_FILE, posts);
@@ -129,7 +161,18 @@ export const savePost = createServerFn({ method: "POST" })
 export const deletePost = createServerFn({ method: "POST" })
   .validator(z.object({ token: z.string(), id: z.string() }))
   .handler(async ({ data }) => {
-    if (!verifyToken(data.token)) return { success: false, error: "Non authentifié" };
+    if (!verifyToken(data.token))
+      return { success: false, error: "Non authentifié" };
+
+    if (isDbConnected()) {
+      const { error } = await supabase!
+        .from("posts")
+        .delete()
+        .eq("id", data.id);
+      if (error) throw error;
+      return { success: true };
+    }
+
     let posts = await readJSON<Post>(POSTS_FILE);
     posts = posts.filter((p) => p.id !== data.id);
     await writeJSON(POSTS_FILE, posts);
@@ -138,33 +181,68 @@ export const deletePost = createServerFn({ method: "POST" })
 
 // ─── FAQ ────────────────────────────────────────────
 
-export const getFaq = createServerFn({ method: "GET" })
-  .handler(async () => {
-    const faq = await readJSON<FaqEntry>(FAQ_FILE);
-    return faq.sort((a, b) => a.order - b.order);
-  });
+export const getFaq = createServerFn({ method: "GET" }).handler(async () => {
+  if (isDbConnected()) {
+    const { data, error } = await supabase!
+      .from("faq")
+      .select("*")
+      .order("order", { ascending: true });
+    if (error) throw error;
+    return (data || []) as FaqEntry[];
+  }
+  const faq = await readJSON<FaqEntry>(FAQ_FILE);
+  return faq.sort((a, b) => a.order - b.order);
+});
 
 export const saveFaqEntry = createServerFn({ method: "POST" })
-  .validator(z.object({
-    token: z.string(),
-    id: z.string().optional(),
-    q: z.string().min(1),
-    a: z.string().min(1),
-    order: z.number().optional().default(0),
-  }))
+  .validator(
+    z.object({
+      token: z.string(),
+      id: z.string().optional(),
+      q: z.string().min(1),
+      a: z.string().min(1),
+      order: z.number().optional().default(0),
+    })
+  )
   .handler(async ({ data }) => {
-    if (!verifyToken(data.token)) return { success: false, error: "Non authentifié" };
+    if (!verifyToken(data.token))
+      return { success: false, error: "Non authentifié" };
+
+    if (isDbConnected()) {
+      if (data.id) {
+        const { error } = await supabase!
+          .from("faq")
+          .update({ q: data.q, a: data.a, order: data.order })
+          .eq("id", data.id);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase!.from("faq").insert({
+          id: generateId(),
+          q: data.q,
+          a: data.a,
+          order: data.order || 0,
+        });
+        if (error) throw error;
+      }
+      return { success: true };
+    }
+
     const faq = await readJSON<FaqEntry>(FAQ_FILE);
     if (data.id && faq.find((f) => f.id === data.id)) {
       const idx = faq.findIndex((f) => f.id === data.id);
-      faq[idx] = { ...faq[idx], ...data, token: undefined };
+      faq[idx] = {
+        ...faq[idx],
+        q: data.q,
+        a: data.a,
+        order: data.order ?? faq[idx].order,
+      };
     } else {
       faq.push({
         id: generateId(),
         q: data.q,
         a: data.a,
         order: data.order || faq.length,
-        createdAt: new Date().toISOString(),
+        created_at: new Date().toISOString(),
       });
     }
     await writeJSON(FAQ_FILE, faq);
@@ -174,7 +252,18 @@ export const saveFaqEntry = createServerFn({ method: "POST" })
 export const deleteFaqEntry = createServerFn({ method: "POST" })
   .validator(z.object({ token: z.string(), id: z.string() }))
   .handler(async ({ data }) => {
-    if (!verifyToken(data.token)) return { success: false, error: "Non authentifié" };
+    if (!verifyToken(data.token))
+      return { success: false, error: "Non authentifié" };
+
+    if (isDbConnected()) {
+      const { error } = await supabase!
+        .from("faq")
+        .delete()
+        .eq("id", data.id);
+      if (error) throw error;
+      return { success: true };
+    }
+
     let faq = await readJSON<FaqEntry>(FAQ_FILE);
     faq = faq.filter((f) => f.id !== data.id);
     await writeJSON(FAQ_FILE, faq);
