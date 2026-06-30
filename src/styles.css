@@ -160,9 +160,9 @@
   text-transform: uppercase;
   transition: background 0.25s ease, color 0.25s ease;
   &:hover {
-    background: #FDE0B2;
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    background: #D97706;
+    color: white;
+    border-color: #D97706;
   }
 }
 
