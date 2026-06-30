@@ -87,9 +87,9 @@ function HomePage() {
             <div className="relative mt-6">
               <span className="absolute -left-6 top-3 h-16 w-0.5 rounded-full bg-gradient-to-b from-primary/60 to-transparent hidden md:block" />
               <h1 className="font-serif text-lg font-bold leading-[1.2] text-ink md:text-xl lg:text-2xl">
-                <span className="block">Sécurisez vos activités.</span>
-                <span className="block mt-1">Optimisez vos décisions.</span>
-                <span className="block mt-2 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent italic">
+                <span className="block animate-fade-slide-up" style={{ animationDelay: "0s" }}>Sécurisez vos activités.</span>
+                <span className="block mt-1 animate-fade-slide-up" style={{ animationDelay: "0.2s" }}>Optimisez vos décisions.</span>
+                <span className="block mt-2 animate-fade-slide-up bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent italic animate-shimmer" style={{ animationDelay: "0.4s" }}>
                   Défendez vos intérêts.
                 </span>
               </h1>
