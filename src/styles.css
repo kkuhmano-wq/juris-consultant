@@ -177,8 +177,8 @@
     content: "";
     display: inline-block;
     width: 28px;
-    height: 1px;
-    background: var(--color-primary);
+    height: 1.5px;
+    background: #D97706;
   }
 }
 

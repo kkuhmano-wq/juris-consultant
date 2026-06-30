@@ -99,7 +99,7 @@ function CabinetPage() {
             </p>
           </div>
           <div className="rounded-2xl bg-[var(--gradient-ink)] p-10 text-background">
-            <span className="eyebrow text-primary-soft before:bg-primary-soft">Vision</span>
+            <span className="eyebrow text-[#D97706] before:bg-[#D97706]">Vision</span>
             <h2 className="mt-5 font-serif text-3xl font-semibold text-background">
               Devenir une référence du conseil juridique et fiscal en Afrique francophone.
             </h2>

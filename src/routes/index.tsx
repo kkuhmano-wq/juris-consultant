@@ -267,7 +267,7 @@ function HomePage() {
           <div className="relative overflow-hidden rounded-3xl bg-[var(--gradient-ink)] px-8 py-16 text-center md:px-16 md:py-20">
             <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full bg-primary/30 blur-3xl" />
             <div className="relative mx-auto max-w-2xl">
-              <span className="eyebrow mx-auto justify-center text-primary-soft before:bg-primary-soft">
+              <span className="eyebrow mx-auto justify-center text-[#D97706] before:bg-[#D97706]">
                 Appel à l'action
               </span>
               <h2 className="mt-6 font-serif text-4xl font-semibold text-background md:text-5xl">
