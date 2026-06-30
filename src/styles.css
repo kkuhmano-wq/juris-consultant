@@ -162,7 +162,7 @@
   &:hover {
     background: #D97706;
     color: white;
-    border-color: #D97706;
+    border-color: var(--color-primary);
   }
 }
 
