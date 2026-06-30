@@ -153,9 +153,6 @@ function HomePage() {
                 Dix domaines d'intervention au service de votre sérénité.
               </h2>
             </div>
-            <Link to="/expertises" className="text-sm font-semibold text-primary hover:underline">
-              Voir toutes les expertises →
-            </Link>
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
