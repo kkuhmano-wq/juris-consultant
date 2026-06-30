@@ -171,10 +171,6 @@ function HomePage() {
       {e.desc}
     </p>
 
-    <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-      En savoir plus
-      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-    </span>
   </Link>
 ))}
           </div>
