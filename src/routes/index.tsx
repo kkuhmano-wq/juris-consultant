@@ -157,7 +157,7 @@ function HomePage() {
   <Link
     key={e.title}
     to={e.slug}
-    className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl"
+    className="group relative overflow-hidden rounded-2xl border-2 border-border bg-card p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[inset_0_1.5px_0_rgba(255,255,255,0.35),inset_0_-1.5px_0_rgba(0,0,0,0.1),var(--shadow-soft)]"
   >
     <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg">
       <e.icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" strokeWidth={1.6} />
