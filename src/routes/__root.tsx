@@ -7,12 +7,18 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/lib/client-auth";
+
+function ClientOnly({ children }: { children: ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  return mounted ? <>{children}</> : null;
+}
 
 function NotFoundComponent() {
   return (
@@ -128,7 +134,9 @@ function RootComponent() {
       <AuthProvider>
         <Outlet />
       </AuthProvider>
-      <Toaster />
+      <ClientOnly>
+        <Toaster />
+      </ClientOnly>
     </QueryClientProvider>
   );
 }
