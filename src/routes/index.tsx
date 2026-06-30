@@ -108,7 +108,7 @@ function HomePage() {
 >
   Prendre rendez-vous <ArrowRight className="h-4 w-4" />
 </a>
-              <Link to="/expertises" className="btn-outline">
+              <Link to="/expertises" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D97706] px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-[0_4px_14px_rgba(217,119,6,0.35)] transition-all duration-250 hover:translate-y-[-2px] hover:bg-[#B85E00] hover:shadow-[0_8px_24px_rgba(217,119,6,0.45)]">
                 Découvrir nos expertises
               </Link>
             </div>
@@ -244,7 +244,7 @@ function HomePage() {
               Notre mission consiste à sécuriser les activités de nos clients tout en les aidant à
               prendre des décisions conformes et stratégiques.
             </p>
-            <Link to="/cabinet" className="mt-8 btn-outline">
+            <Link to="/cabinet" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#D97706] px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white shadow-[0_4px_14px_rgba(217,119,6,0.35)] transition-all duration-250 hover:translate-y-[-2px] hover:bg-[#B85E00] hover:shadow-[0_8px_24px_rgba(217,119,6,0.45)]">
               Découvrir le cabinet
             </Link>
           </div>
