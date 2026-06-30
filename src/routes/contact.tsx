@@ -97,9 +97,9 @@ const [loading, setLoading] = useState(false);
         <div className="container-page grid gap-12 lg:grid-cols-12">
           <aside className="lg:col-span-5 space-y-5">
             {[
-  { icon: Phone, label: "Téléphone", value: "+225 07 89 85 36 07" },
-  { icon: MessageCircle, label: "WhatsApp", value: "+225 07 89 85 36 07" },
-  { icon: Mail, label: "E-mail", value: "contact" },
+  { icon: Phone, label: "Téléphone", value: "+225 05 65 62 36 10" },
+  { icon: MessageCircle, label: "WhatsApp", value: "+225 05 65 62 36 10" },
+  { icon: Mail, label: "E-mail", value: "jurisconsultants@gmail.com" },
   { icon: MapPin, label: "Adresse", value: "Abidjan, Côte d'Ivoire" },
   {
     icon: Clock,

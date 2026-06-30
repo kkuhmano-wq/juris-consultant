@@ -42,8 +42,8 @@ export function SiteFooter() {
             Contact
           </h4>
           <ul className="mt-5 space-y-3 text-sm text-background/80">
-            <li className="flex items-start gap-2.5"><Phone className="mt-0.5 h-4 w-4 text-primary-soft" /> +225 07 89 85 36 07</li>
-            <li className="flex items-start gap-2.5"><Mail className="mt-0.5 h-4 w-4 text-primary-soft" /> contact@juris-consultant.com</li>
+ <li className="flex items-start gap-2.5"><Phone className="mt-0.5 h-4 w-4 text-primary-soft" /> +225 05 65 62 36 10</li>
+             <li className="flex items-start gap-2.5"><Mail className="mt-0.5 h-4 w-4 text-primary-soft" /> jurisconsultants@gmail.com</li>
             <li className="flex items-start gap-2.5"><MapPin className="mt-0.5 h-4 w-4 text-primary-soft" /> Abidjan, Côte d'Ivoire</li>
           </ul>
         </div>
