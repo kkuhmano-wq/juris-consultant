@@ -86,7 +86,7 @@ function HomePage() {
             <span className="eyebrow">Cabinet de Conseil Juridique &amp; Fiscal</span>
             <div className="relative mt-6">
               <span className="absolute -left-6 top-3 h-16 w-0.5 rounded-full bg-gradient-to-b from-primary/60 to-transparent hidden md:block" />
-              <h1 className="font-serif text-5xl font-semibold leading-[1.1] text-ink md:text-6xl lg:text-7xl">
+              <h1 className="font-serif text-4xl font-semibold leading-[1.1] text-ink md:text-5xl lg:text-6xl">
                 <span className="block">Sécurisez vos activités.</span>
                 <span className="block mt-1">Optimisez vos décisions.</span>
                 <span className="block mt-2 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent italic">
