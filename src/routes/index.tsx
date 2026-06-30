@@ -84,10 +84,16 @@ function HomePage() {
         <div className="container-page grid items-center gap-14 py-20 lg:grid-cols-12 lg:py-28">
           <div className="lg:col-span-7">
             <span className="eyebrow">Cabinet de Conseil Juridique &amp; Fiscal</span>
-            <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] text-ink md:text-6xl lg:text-7xl">
-              Sécurisez vos activités. Optimisez vos décisions.{" "}
-              <span className="italic text-primary">Défendez vos intérêts.</span>
-            </h1>
+            <div className="relative mt-6">
+              <span className="absolute -left-6 top-3 h-16 w-0.5 rounded-full bg-gradient-to-b from-primary/60 to-transparent hidden md:block" />
+              <h1 className="font-serif text-5xl font-semibold leading-[1.1] text-ink md:text-6xl lg:text-7xl">
+                <span className="block">Sécurisez vos activités.</span>
+                <span className="block mt-1">Optimisez vos décisions.</span>
+                <span className="block mt-2 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent italic">
+                  Défendez vos intérêts.
+                </span>
+              </h1>
+            </div>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
               Cabinet JurisConsultants accompagne les entreprises, commerçants, travailleurs et investisseurs
               dans la sécurisation de leurs activités et la gestion de leurs obligations juridiques
