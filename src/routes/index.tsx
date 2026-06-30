@@ -157,13 +157,13 @@ function HomePage() {
   <Link
     key={e.title}
     to={e.slug}
-    className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/40 hover:shadow-[var(--shadow-soft)]"
+    className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl"
   >
-    <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary">
-      <e.icon className="h-6 w-6" strokeWidth={1.6} />
+    <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg">
+      <e.icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" strokeWidth={1.6} />
     </span>
 
-    <h3 className="mt-6 font-serif text-2xl font-semibold text-ink">
+    <h3 className="mt-6 font-serif text-2xl font-semibold text-ink transition-colors duration-300 group-hover:text-primary">
       {e.title}
     </h3>
 
