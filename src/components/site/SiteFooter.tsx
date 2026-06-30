@@ -12,7 +12,7 @@ export function SiteFooter() {
               <Scale className="h-5 w-5" strokeWidth={1.6} />
             </span>
             <span className="font-serif text-xl font-semibold tracking-tight text-background">
-              JURIS-CONSULTANT
+              Cabinet JurisConsultants
             </span>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-background/70">
@@ -51,7 +51,7 @@ export function SiteFooter() {
 
 <div className="mt-8 ml-7">
   <h4 className="text-xs font-semibold uppercase tracking-[0.22em] text-background/60">
-   Suivez JURIS-CONSULTANT
+   Suivez Cabinet JurisConsultants
   </h4>
 
   <div className="mt-4 flex items-center gap-4">
@@ -102,7 +102,7 @@ export function SiteFooter() {
 </div>
       <div className="border-t border-background/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-background/50 md:flex-row">
-          <p>© {new Date().getFullYear()} JURIS-CONSULTANT. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Cabinet JurisConsultants. Tous droits réservés.</p>
           <p>Cabinet de Conseil Juridique &amp; Fiscal</p>
         </div>
       </div>

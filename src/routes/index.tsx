@@ -3,14 +3,15 @@ import {
   ArrowRight,
   Scale,
   Calculator,
-  Building2,
-  HandCoins,
+  Landmark,
   Rocket,
   Gavel,
   ShieldCheck,
   Microscope,
   Users,
   Lock,
+  Sprout,
+  GraduationCap,
   CheckCircle2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -20,13 +21,13 @@ import heroFounder from "@/assets/hero-founder.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "JURIS-CONSULTANT — Conseil Juridique & Fiscal pour entreprises" },
+      { title: "Cabinet JurisConsultants — Conseil Juridique & Fiscal pour entreprises" },
       {
         name: "description",
         content:
           "Cabinet de conseil juridique et fiscal. Sécurisation des activités, conformité, droit des affaires, recouvrement, contentieux.",
       },
-      { property: "og:title", content: "JURIS-CONSULTANT — Conseil Juridique & Fiscal" },
+      { property: "og:title", content: "Cabinet JurisConsultants — Conseil Juridique & Fiscal" },
       {
         property: "og:description",
         content: "Anticiper les risques. Sécuriser vos activités. Optimiser vos décisions.",
@@ -39,12 +40,16 @@ export const Route = createFileRoute("/")({
 });
 
 const expertises = [
-  { icon: Scale, title: "Conseil Juridique", desc: "Sécurisation des activités et assistance juridique." },
-  { icon: Calculator, title: "Conseil Fiscal", desc: "Conformité et optimisation fiscale." },
-  { icon: Building2, title: "Opérations Complexes", desc: "Fusions, acquisitions, restructurations et ingénierie juridique." },
-  { icon: HandCoins, title: "Recouvrement de Créances", desc: "Protection et récupération des créances." },
-  { icon: Rocket, title: "Création d'Entreprise", desc: "Accompagnement des porteurs de projets." },
-  { icon: Gavel, title: "Contentieux", desc: "Assistance et représentation devant les juridictions." },
+  { icon: Scale, title: "Conseil Juridique & Gouvernance", desc: "Sécurisation des activités et assistance juridique.", slug: "/conseil-juridique" },
+  { icon: Calculator, title: "Conseil Fiscal & Optimisation", desc: "Conformité et optimisation fiscale.", slug: "/conseil-fiscal" },
+  { icon: Landmark, title: "Opérations Complexes & Stratégie", desc: "Fusions, acquisitions et ingénierie juridique.", slug: "/operations-complexes" },
+  { icon: Gavel, title: "Recouvrement & Contentieux", desc: "Protection et défense de vos intérêts.", slug: "/contentieux" },
+  { icon: Rocket, title: "Création & Développement d'Entreprise", desc: "Accompagnement des porteurs de projets.", slug: "/creation-entreprise" },
+  { icon: ShieldCheck, title: "Patrimoine & Propriété", desc: "Protection des actifs fonciers et intellectuels.", slug: "/patrimoine-propriete" },
+  { icon: Lock, title: "Numérique & Cybersécurité Juridique", desc: "Sécurisation juridique des systèmes d'information.", slug: "/cybersecurite-juridique" },
+  { icon: Users, title: "RH & Psychologie du Travail", desc: "Gestion des ressources humaines et accompagnement managérial.", slug: "/ressources-humaines" },
+  { icon: Sprout, title: "Développement Territorial & Bureau d'Études", desc: "Développement local, aménagement et études.", slug: "/developpement-territorial" },
+  { icon: GraduationCap, title: "Formation & Renforcement des Capacités", desc: "Formations professionnelles sur mesure.", slug: "/formation" },
 ];
 
 const reasons = [
@@ -84,13 +89,13 @@ function HomePage() {
               <span className="italic text-primary">Défendez vos intérêts.</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              JURIS-CONSULTANT accompagne les entreprises, commerçants, travailleurs et investisseurs
+              Cabinet JurisConsultants accompagne les entreprises, commerçants, travailleurs et investisseurs
               dans la sécurisation de leurs activités et la gestion de leurs obligations juridiques
               et fiscales.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
              <a
-  href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+  href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
   target="_blank"
   rel="noopener noreferrer"
   className="btn-primary"
@@ -117,7 +122,7 @@ function HomePage() {
             <div className="overflow-hidden rounded-[1.5rem] shadow-[var(--shadow-elegant)]">
               <img
                 src={heroFounder}
-                alt="Fondateur du cabinet JURIS-CONSULTANT"
+                alt="Fondateur du cabinet Cabinet JurisConsultants"
                 width={1080}
                 height={1600}
                 className="h-[34rem] w-full object-cover md:h-[40rem]"
@@ -139,7 +144,7 @@ function HomePage() {
             <div className="max-w-2xl">
               <span className="eyebrow">Nos Expertises</span>
               <h2 className="mt-5 font-serif text-4xl font-semibold text-ink md:text-5xl">
-                Six domaines d'intervention au service de votre sérénité.
+                Dix domaines d'intervention au service de votre sérénité.
               </h2>
             </div>
             <Link to="/expertises" className="text-sm font-semibold text-primary hover:underline">
@@ -148,22 +153,10 @@ function HomePage() {
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-           {expertises.map((e) => (
+            {expertises.map((e) => (
   <Link
     key={e.title}
-    to={
-      e.title === "Conseil Juridique"
-        ? "/conseil-juridique"
-        : e.title === "Conseil Fiscal"
-        ? "/conseil-fiscal"
-        : e.title === "Opérations Complexes"
-        ? "/operations-complexes"
-        : e.title === "Recouvrement de Créances"
-        ? "/recouvrement-creances"
-        : e.title === "Création d'Entreprise"
-        ? "/creation-entreprise"
-        : "/contentieux"
-    }
+    to={e.slug}
     className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/40 hover:shadow-[var(--shadow-soft)]"
   >
     <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary">
@@ -244,7 +237,7 @@ function HomePage() {
               Un cabinet engagé aux côtés de ceux qui entreprennent.
             </h2>
             <p className="mt-6 text-muted-foreground">
-              JURIS-CONSULTANT est un cabinet spécialisé en conseil juridique et fiscal offrant un
+              Cabinet JurisConsultants est un cabinet spécialisé en conseil juridique et fiscal offrant un
               accompagnement professionnel aux entreprises, commerçants, travailleurs et
               investisseurs.
             </p>
@@ -279,7 +272,7 @@ function HomePage() {
                 Besoin d'un accompagnement juridique ou fiscal&nbsp;?
               </h2>
               <p className="mt-5 text-background/75">
-                Prenez rendez-vous avec un expert JURIS-CONSULTANT.
+                Prenez rendez-vous avec un expert Cabinet JurisConsultants.
               </p>
               <Link to="/contact" className="btn-primary mt-9">
                 Nous contacter <ArrowRight className="h-4 w-4" />

@@ -1,38 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Scale, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ShieldCheck, Building2, Copyright, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-export const Route = createFileRoute("/conseil-juridique")({
+export const Route = createFileRoute("/patrimoine-propriete")({
   head: () => ({
     meta: [
       {
         title:
-          "Conseil Juridique & Gouvernance | Cabinet JurisConsultants",
+          "Patrimoine & Propriété | Cabinet JurisConsultants",
       },
       {
         name: "description",
         content:
-          "Accompagnement juridique complet : droit des sociétés, gouvernance, contrats, formalités, secrétariat juridique, médiation et audit juridique.",
+          "Protection des actifs fonciers, immobiliers et intellectuels : protection foncière, sécurisation immobilière, marques, propriété artistique et industrielle.",
       },
     ],
   }),
-  component: ConseilJuridiquePage,
+  component: PatrimoineProprietePage,
 });
 
 const services = [
-  "Droit des sociétés",
-  "Gouvernance d'entreprise",
-  "Contrats et conventions",
-  "Formalités juridiques",
-  "Secrétariat juridique",
-  "Gestion de portefeuille juridique",
-  "Médiation",
-  "Intermédiation",
-  "Audit juridique et analyse des risques",
+  { icon: Building2, label: "Protection foncière et immobilière" },
+  { icon: ShieldCheck, label: "Gestion des risques patrimoniaux" },
+  { icon: Copyright, label: "Propriété artistique" },
+  { icon: ShieldCheck, label: "Marques commerciales" },
+  { icon: ShieldCheck, label: "Propriété industrielle" },
 ];
 
-function ConseilJuridiquePage() {
+function PatrimoineProprietePage() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -42,15 +38,14 @@ function ConseilJuridiquePage() {
           <span className="eyebrow">Expertise</span>
 
           <h1 className="mt-5 font-serif text-5xl font-semibold text-ink md:text-6xl">
-            Conseil Juridique<br />& Gouvernance
+            Patrimoine<br />& Propriété
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Nous accompagnons les entreprises dans leur organisation juridique, leur conformité
-            et la sécurisation de leurs opérations.
+            Nous protégeons les actifs fonciers, immobiliers et intellectuels de nos clients.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8">
             <a
               href="https://wa.me/2250789853607?text=Bonjour%20Cabinet%20JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
@@ -67,19 +62,20 @@ function ConseilJuridiquePage() {
       <section className="section-pad">
         <div className="container-page max-w-4xl">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Une structure juridique solide pour une entreprise durable
+            Sécuriser et valoriser votre patrimoine
           </h2>
 
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            La sécurisation juridique est le socle de toute activité pérenne. Notre cabinet
-            vous accompagne dans l'organisation de votre structure, la rédaction de vos
-            contrats et la gestion de vos obligations légales.
+            La protection de vos actifs est essentielle à la pérennité de votre entreprise
+            et à la préservation de votre patrimoine personnel. Qu'il s'agisse de biens
+            fonciers, immobiliers ou de droits de propriété intellectuelle, notre cabinet
+            vous accompagne dans toutes les démarches de sécurisation.
           </p>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Nous intervenons à chaque étape clé de la vie de votre entreprise, depuis sa
-            constitution jusqu'à son développement, en passant par la gouvernance et la
-            gestion des relations contractuelles.
+            Nous intervenons également dans la gestion des risques patrimoniaux, la
+            protection de vos marques et créations, et la défense de vos droits de
+            propriété industrielle et artistique.
           </p>
         </div>
       </section>
@@ -91,13 +87,10 @@ function ConseilJuridiquePage() {
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div
-                key={service}
-                className="rounded-2xl bg-background p-6 border border-border"
-              >
-                <Scale className="h-8 w-8 text-primary" />
-                <p className="mt-4 font-medium text-foreground">{service}</p>
+            {services.map((s) => (
+              <div key={s.label} className="rounded-2xl bg-background p-6 border border-border">
+                <s.icon className="h-8 w-8 text-primary" />
+                <p className="mt-4 font-medium text-foreground">{s.label}</p>
               </div>
             ))}
           </div>
@@ -107,17 +100,17 @@ function ConseilJuridiquePage() {
       <section className="section-pad">
         <div className="container-page">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Pourquoi faire appel à Cabinet JurisConsultants ?
+            Pourquoi nous confier votre patrimoine ?
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[
-              "Analyse approfondie de chaque dossier",
-              "Solutions adaptées à votre activité",
+              "Expertise en droit foncier et immobilier",
+              "Protection complète de vos actifs",
               "Accompagnement personnalisé",
-              "Réactivité et disponibilité",
-              "Respect de la confidentialité",
-              "Expertise juridique multidisciplinaire",
+              "Stratégie patrimoniale sur mesure",
+              "Défense de vos droits de propriété intellectuelle",
+              "Suivi rigoureux des procédures",
             ].map((item) => (
               <div
                 key={item}
@@ -135,12 +128,11 @@ function ConseilJuridiquePage() {
         <div className="container-page">
           <div className="rounded-3xl bg-[var(--gradient-ink)] p-12 text-center">
             <h2 className="font-serif text-4xl font-semibold text-background">
-              Besoin d'un accompagnement juridique ?
+              Vous souhaitez protéger vos actifs ?
             </h2>
 
             <p className="mt-4 text-background/80 max-w-2xl mx-auto">
-              Nos experts sont à votre disposition pour analyser votre situation
-              et vous proposer des solutions adaptées à vos besoins.
+              Contactez-nous pour une analyse de votre situation patrimoniale.
             </p>
 
             <a

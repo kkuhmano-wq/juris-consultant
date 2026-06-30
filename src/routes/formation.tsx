@@ -1,38 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Scale, CheckCircle2 } from "lucide-react";
+import { ArrowRight, GraduationCap, BookOpen, Users, Presentation, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-export const Route = createFileRoute("/conseil-juridique")({
+export const Route = createFileRoute("/formation")({
   head: () => ({
     meta: [
       {
         title:
-          "Conseil Juridique & Gouvernance | Cabinet JurisConsultants",
+          "Formation & Renforcement des Capacités | Cabinet JurisConsultants",
       },
       {
         name: "description",
         content:
-          "Accompagnement juridique complet : droit des sociétés, gouvernance, contrats, formalités, secrétariat juridique, médiation et audit juridique.",
+          "Formations professionnelles en droit, fiscalité et management : renforcement des capacités, séminaires et ateliers pratiques pour entreprises et institutions.",
       },
     ],
   }),
-  component: ConseilJuridiquePage,
+  component: FormationPage,
 });
 
 const services = [
-  "Droit des sociétés",
-  "Gouvernance d'entreprise",
-  "Contrats et conventions",
-  "Formalités juridiques",
-  "Secrétariat juridique",
-  "Gestion de portefeuille juridique",
-  "Médiation",
-  "Intermédiation",
-  "Audit juridique et analyse des risques",
+  { icon: GraduationCap, label: "Formations juridiques" },
+  { icon: BookOpen, label: "Formations fiscales" },
+  { icon: Users, label: "Renforcement des capacités" },
+  { icon: Presentation, label: "Séminaires professionnels" },
+  { icon: CheckCircle2, label: "Ateliers pratiques" },
 ];
 
-function ConseilJuridiquePage() {
+function FormationPage() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -42,15 +38,15 @@ function ConseilJuridiquePage() {
           <span className="eyebrow">Expertise</span>
 
           <h1 className="mt-5 font-serif text-5xl font-semibold text-ink md:text-6xl">
-            Conseil Juridique<br />& Gouvernance
+            Formation<br />& Renforcement des Capacités
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Nous accompagnons les entreprises dans leur organisation juridique, leur conformité
-            et la sécurisation de leurs opérations.
+            Nous proposons des formations professionnelles adaptées aux besoins des entreprises
+            et institutions.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8">
             <a
               href="https://wa.me/2250789853607?text=Bonjour%20Cabinet%20JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
@@ -67,19 +63,19 @@ function ConseilJuridiquePage() {
       <section className="section-pad">
         <div className="container-page max-w-4xl">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Une structure juridique solide pour une entreprise durable
+            Développez les compétences de vos équipes
           </h2>
 
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            La sécurisation juridique est le socle de toute activité pérenne. Notre cabinet
-            vous accompagne dans l'organisation de votre structure, la rédaction de vos
-            contrats et la gestion de vos obligations légales.
+            La formation professionnelle est un investissement stratégique pour toute
+            organisation. Notre cabinet conçoit et anime des programmes de formation
+            sur mesure, adaptés aux besoins spécifiques de vos équipes.
           </p>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Nous intervenons à chaque étape clé de la vie de votre entreprise, depuis sa
-            constitution jusqu'à son développement, en passant par la gouvernance et la
-            gestion des relations contractuelles.
+            Domaines couverts : droit des affaires, fiscalité, gestion d'entreprise,
+            conformité, management et développement des compétences. Nos formations
+            allient théorie et pratique pour un impact immédiat.
           </p>
         </div>
       </section>
@@ -87,17 +83,14 @@ function ConseilJuridiquePage() {
       <section className="section-pad bg-secondary">
         <div className="container-page">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Nos domaines d'intervention
+            Nos formations
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div
-                key={service}
-                className="rounded-2xl bg-background p-6 border border-border"
-              >
-                <Scale className="h-8 w-8 text-primary" />
-                <p className="mt-4 font-medium text-foreground">{service}</p>
+            {services.map((s) => (
+              <div key={s.label} className="rounded-2xl bg-background p-6 border border-border">
+                <s.icon className="h-8 w-8 text-primary" />
+                <p className="mt-4 font-medium text-foreground">{s.label}</p>
               </div>
             ))}
           </div>
@@ -107,17 +100,17 @@ function ConseilJuridiquePage() {
       <section className="section-pad">
         <div className="container-page">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Pourquoi faire appel à Cabinet JurisConsultants ?
+            Pourquoi nous choisir ?
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[
-              "Analyse approfondie de chaque dossier",
-              "Solutions adaptées à votre activité",
-              "Accompagnement personnalisé",
-              "Réactivité et disponibilité",
-              "Respect de la confidentialité",
-              "Expertise juridique multidisciplinaire",
+              "Formateurs experts et expérimentés",
+              "Programmes sur mesure",
+              "Approche pédagogique interactive",
+              "Formations en présentiel et à distance",
+              "Suivi post-formation",
+              "Certificats de formation",
             ].map((item) => (
               <div
                 key={item}
@@ -135,12 +128,11 @@ function ConseilJuridiquePage() {
         <div className="container-page">
           <div className="rounded-3xl bg-[var(--gradient-ink)] p-12 text-center">
             <h2 className="font-serif text-4xl font-semibold text-background">
-              Besoin d'un accompagnement juridique ?
+              Vous souhaitez former vos équipes ?
             </h2>
 
             <p className="mt-4 text-background/80 max-w-2xl mx-auto">
-              Nos experts sont à votre disposition pour analyser votre situation
-              et vous proposer des solutions adaptées à vos besoins.
+              Contactez-nous pour construire ensemble un programme adapté à vos besoins.
             </p>
 
             <a

@@ -13,12 +13,13 @@ import {
   LayoutDashboard,
   Eye,
   ArrowRight,
+  UserCheck,
 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Administration — JURIS-CONSULTANT" },
+      { title: "Administration — Cabinet JurisConsultants" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -45,14 +46,19 @@ function AdminPage() {
   useEffect(() => {
     const token = getToken();
     if (!token) { setAuthed(false); return; }
-    requireAuth({ data: { token } }).then((r) => {
-      setAuthed(r.authenticated);
-      if (r.authenticated) {
-        getProspects({}).then((p) => setProspectCount(p.length)).catch(() => {});
-      } else {
+    requireAuth({ data: { token } })
+      .then((r) => {
+        setAuthed(r.authenticated);
+        if (r.authenticated) {
+          getProspects({}).then((p) => setProspectCount(p.length)).catch(() => {});
+        } else {
+          clearToken();
+        }
+      })
+      .catch(() => {
         clearToken();
-      }
-    });
+        setAuthed(false);
+      });
   }, []);
 
   async function handleLogin(e: React.FormEvent) {
@@ -155,6 +161,12 @@ function AdminPage() {
       label: "FAQ",
       desc: "Gérer les questions",
       href: "/admin-faq",
+    },
+    {
+      icon: UserCheck,
+      label: "Clients",
+      desc: "Gérer les comptes clients",
+      href: "/admin-clients",
     },
     {
       icon: Users,

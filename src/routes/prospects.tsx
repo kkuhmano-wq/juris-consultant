@@ -13,7 +13,7 @@ function getToken(): string | null {
 export const Route = createFileRoute("/prospects")({
   head: () => ({
     meta: [
-      { title: "Prospects — JURIS-CONSULTANT" },
+      { title: "Prospects — Cabinet JurisConsultants" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -181,7 +181,7 @@ function ProspectsPage() {
                       <td className="px-5 py-4">
                         <div className="flex items-center gap-2">
                           <a
-                            href={`https://wa.me/2250789853607?text=Bonjour%20${encodeURIComponent(p.name)}%2C%20je%20vous%20contacte%20suite%20%C3%A0%20votre%20demande%20sur%20JURIS-CONSULTANT.`}
+                            href={`https://wa.me/2250789853607?text=Bonjour%20${encodeURIComponent(p.name)}%2C%20je%20vous%20contacte%20suite%20%C3%A0%20votre%20demande%20sur%20Cabinet JurisConsultants.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="rounded-lg p-2 text-primary transition-colors hover:bg-primary-soft"

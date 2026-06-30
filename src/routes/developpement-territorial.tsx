@@ -1,38 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Scale, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Landmark, Building, Sprout, Compass, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
-export const Route = createFileRoute("/conseil-juridique")({
+export const Route = createFileRoute("/developpement-territorial")({
   head: () => ({
     meta: [
       {
         title:
-          "Conseil Juridique & Gouvernance | Cabinet JurisConsultants",
+          "Développement Territorial & Bureau d'Études | Cabinet JurisConsultants",
       },
       {
         name: "description",
         content:
-          "Accompagnement juridique complet : droit des sociétés, gouvernance, contrats, formalités, secrétariat juridique, médiation et audit juridique.",
+          "Accompagnement des collectivités et entreprises dans le développement local, l'aménagement urbain et les études agro-industrielles et touristiques.",
       },
     ],
   }),
-  component: ConseilJuridiquePage,
+  component: DeveloppementTerritorialPage,
 });
 
 const services = [
-  "Droit des sociétés",
-  "Gouvernance d'entreprise",
-  "Contrats et conventions",
-  "Formalités juridiques",
-  "Secrétariat juridique",
-  "Gestion de portefeuille juridique",
-  "Médiation",
-  "Intermédiation",
-  "Audit juridique et analyse des risques",
+  { icon: Landmark, label: "Assistance au développement local" },
+  { icon: Building, label: "Politiques locales d'aménagement urbain" },
+  { icon: Sprout, label: "Bureau d'études agro-industrielles" },
+  { icon: Compass, label: "Bureau d'études touristiques" },
 ];
 
-function ConseilJuridiquePage() {
+function DeveloppementTerritorialPage() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -42,15 +37,15 @@ function ConseilJuridiquePage() {
           <span className="eyebrow">Expertise</span>
 
           <h1 className="mt-5 font-serif text-5xl font-semibold text-ink md:text-6xl">
-            Conseil Juridique<br />& Gouvernance
+            Développement Territorial<br />& Bureau d'Études
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Nous accompagnons les entreprises dans leur organisation juridique, leur conformité
-            et la sécurisation de leurs opérations.
+            Nous accompagnons les collectivités, institutions et entreprises dans leurs
+            projets de développement.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8">
             <a
               href="https://wa.me/2250789853607?text=Bonjour%20Cabinet%20JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
@@ -67,19 +62,19 @@ function ConseilJuridiquePage() {
       <section className="section-pad">
         <div className="container-page max-w-4xl">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Une structure juridique solide pour une entreprise durable
+            Accompagner les territoires vers leur développement
           </h2>
 
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            La sécurisation juridique est le socle de toute activité pérenne. Notre cabinet
-            vous accompagne dans l'organisation de votre structure, la rédaction de vos
-            contrats et la gestion de vos obligations légales.
+            Le développement territorial repose sur une vision stratégique et une connaissance
+            approfondie des réalités locales. Notre cabinet assiste les collectivités et les
+            institutions dans la définition et la mise en œuvre de leurs politiques de
+            développement.
           </p>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Nous intervenons à chaque étape clé de la vie de votre entreprise, depuis sa
-            constitution jusqu'à son développement, en passant par la gouvernance et la
-            gestion des relations contractuelles.
+            À travers nos bureaux d'études spécialisés, nous apportons notre expertise aux
+            projets agro-industriels et touristiques, de la phase d'étude à la réalisation.
           </p>
         </div>
       </section>
@@ -90,14 +85,11 @@ function ConseilJuridiquePage() {
             Nos domaines d'intervention
           </h2>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div
-                key={service}
-                className="rounded-2xl bg-background p-6 border border-border"
-              >
-                <Scale className="h-8 w-8 text-primary" />
-                <p className="mt-4 font-medium text-foreground">{service}</p>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+            {services.map((s) => (
+              <div key={s.label} className="rounded-2xl bg-background p-6 border border-border">
+                <s.icon className="h-8 w-8 text-primary" />
+                <p className="mt-4 font-medium text-foreground">{s.label}</p>
               </div>
             ))}
           </div>
@@ -107,17 +99,17 @@ function ConseilJuridiquePage() {
       <section className="section-pad">
         <div className="container-page">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Pourquoi faire appel à Cabinet JurisConsultants ?
+            Pourquoi collaborer avec nous ?
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[
-              "Analyse approfondie de chaque dossier",
-              "Solutions adaptées à votre activité",
-              "Accompagnement personnalisé",
-              "Réactivité et disponibilité",
-              "Respect de la confidentialité",
-              "Expertise juridique multidisciplinaire",
+              "Expertise en développement local et régional",
+              "Connaissance des enjeux territoriaux",
+              "Bureaux d'études spécialisés (agro-industrie, tourisme)",
+              "Accompagnement de la stratégie à la réalisation",
+              "Réseau de partenaires institutionnels",
+              "Approche participative et inclusive",
             ].map((item) => (
               <div
                 key={item}
@@ -135,12 +127,11 @@ function ConseilJuridiquePage() {
         <div className="container-page">
           <div className="rounded-3xl bg-[var(--gradient-ink)] p-12 text-center">
             <h2 className="font-serif text-4xl font-semibold text-background">
-              Besoin d'un accompagnement juridique ?
+              Vous portez un projet de développement territorial ?
             </h2>
 
             <p className="mt-4 text-background/80 max-w-2xl mx-auto">
-              Nos experts sont à votre disposition pour analyser votre situation
-              et vous proposer des solutions adaptées à vos besoins.
+              Contactez-nous pour échanger sur votre projet.
             </p>
 
             <a

@@ -1,5 +1,6 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 import { requireAuth, getFaq, saveFaqEntry, deleteFaqEntry } from "@/lib/admin.server";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -12,7 +13,7 @@ function getToken(): string | null {
 export const Route = createFileRoute("/admin-faq")({
   head: () => ({
     meta: [
-      { title: "Gestion FAQ — JURIS-CONSULTANT" },
+      { title: "Gestion FAQ — Cabinet JurisConsultants" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -20,17 +21,25 @@ export const Route = createFileRoute("/admin-faq")({
 });
 
 function AdminFaqPage() {
-  const router = useRouter();
   const [authed, setAuthed] = useState<boolean | null>(null);
   const [faq, setFaq] = useState<any[]>([]);
   const [editing, setEditing] = useState<any | null>(null);
   const [saving, setSaving] = useState(false);
 
+  async function loadFaq() {
+    try {
+      const f = await getFaq();
+      setFaq(f);
+    } catch {
+      toast.error("Erreur lors du chargement de la FAQ");
+    }
+  }
+
   useEffect(() => {
     const token = getToken();
     if (!token) { setAuthed(false); return; }
     requireAuth({ data: { token } }).then((r) => setAuthed(r.authenticated));
-    getFaq({}).then(setFaq);
+    loadFaq();
   }, []);
 
   async function handleSave(e: React.FormEvent) {
@@ -50,9 +59,11 @@ function AdminFaqPage() {
       });
       setEditing(null);
       form.reset();
-      getFaq({}).then(setFaq);
+      toast.success(editing?.id ? "FAQ modifiée" : "FAQ ajoutée");
+      await loadFaq();
     } catch (err) {
       console.error(err);
+      toast.error("Erreur lors de l'enregistrement");
     } finally {
       setSaving(false);
     }
@@ -60,8 +71,13 @@ function AdminFaqPage() {
 
   async function handleDelete(id: string) {
     if (!confirm("Supprimer cette entrée FAQ ?")) return;
-    await deleteFaqEntry({ data: { token: getToken() || "", id } });
-    setFaq((prev) => prev.filter((f) => f.id !== id));
+    try {
+      await deleteFaqEntry({ data: { token: getToken() || "", id } });
+      setFaq((prev) => prev.filter((f) => f.id !== id));
+      toast.success("Entrée supprimée");
+    } catch {
+      toast.error("Erreur lors de la suppression");
+    }
   }
 
   if (authed === false) {

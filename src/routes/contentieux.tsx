@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Gavel, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Gavel, HandCoins, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
@@ -8,25 +8,33 @@ export const Route = createFileRoute("/contentieux")({
     meta: [
       {
         title:
-          "Contentieux | JURIS-CONSULTANT - Conseil Juridique & Fiscal",
+          "Recouvrement & Contentieux | Cabinet JurisConsultants",
       },
       {
         name: "description",
         content:
-          "Assistance et représentation devant les juridictions. Contentieux commercial, civil, social, fiscal et recouvrement de créances.",
+          "Assistance en recouvrement de créances et contentieux : mise en demeure, négociation, procédures judiciaires, représentation et exécution des décisions.",
       },
     ],
   }),
   component: ContentieuxPage,
 });
 
-const services = [
+const recouvrementServices = [
+  "Mise en demeure",
+  "Négociation amiable",
+  "Procédures judiciaires",
+  "Exécution des décisions",
+  "Conseil en prévention des impayés",
+];
+
+const contentieuxServices = [
+  "Stratégie contentieuse",
+  "Représentation devant les juridictions",
+  "Négociation amiable",
   "Contentieux commercial",
-  "Contentieux civil",
-  "Contentieux social",
+  "Contentieux civil et social",
   "Contentieux fiscal",
-  "Recouvrement judiciaire",
-  "Exécution des décisions de justice",
 ];
 
 function ContentieuxPage() {
@@ -34,24 +42,22 @@ function ContentieuxPage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      {/* HERO */}
       <section className="section-pad bg-secondary">
         <div className="container-page">
           <span className="eyebrow">Expertise</span>
 
           <h1 className="mt-5 font-serif text-5xl font-semibold text-ink md:text-6xl">
-            Contentieux
+            Recouvrement<br />& Contentieux
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Lorsque le dialogue ne suffit plus, nous vous accompagnons dans la
-            défense de vos droits et la protection de vos intérêts devant les
-            juridictions compétentes.
+            Nous assistons nos clients dans la prévention, la gestion et la résolution de
+            leurs litiges, du recouvrement amiable à la représentation en justice.
           </p>
 
           <div className="mt-8">
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet%20JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -63,7 +69,6 @@ function ContentieuxPage() {
         </div>
       </section>
 
-      {/* PRESENTATION */}
       <section className="section-pad">
         <div className="container-page max-w-4xl">
           <h2 className="font-serif text-4xl font-semibold text-ink">
@@ -71,55 +76,70 @@ function ContentieuxPage() {
           </h2>
 
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Les litiges peuvent avoir des conséquences importantes sur vos
-            activités, votre patrimoine ou votre réputation. Une stratégie
-            juridique adaptée permet de maximiser vos chances de succès et de
-            limiter les risques.
+            Les litiges et les impayés peuvent avoir des conséquences importantes sur vos
+            activités, votre trésorerie ou votre réputation. Une stratégie adaptée permet de
+            maximiser vos chances de succès et de limiter les risques.
           </p>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            JURIS-CONSULTANT vous accompagne dans la prévention des conflits,
-            les négociations amiables et la conduite des procédures judiciaires
-            lorsque celles-ci deviennent nécessaires.
+            Cabinet JurisConsultants vous accompagne dans la prévention des conflits,
+            les négociations amiables, le recouvrement de vos créances et la conduite des
+            procédures judiciaires lorsque celles-ci deviennent nécessaires.
           </p>
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="section-pad bg-secondary">
         <div className="container-page">
-          <h2 className="font-serif text-4xl font-semibold text-ink">
-            Nos domaines d'intervention
-          </h2>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div
-                key={service}
-                className="rounded-2xl bg-background p-6 border border-border"
-              >
-                <Gavel className="h-8 w-8 text-primary" />
-                <p className="mt-4 font-medium text-foreground">
-                  {service}
-                </p>
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-primary">
+                  <HandCoins className="h-5 w-5" strokeWidth={1.6} />
+                </span>
+                <h2 className="font-serif text-3xl font-semibold text-ink">Recouvrement</h2>
               </div>
-            ))}
+              <div className="space-y-3">
+                {recouvrementServices.map((s) => (
+                  <div key={s} className="flex items-start gap-3 rounded-xl bg-background border border-border p-4">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-foreground">{s}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-primary">
+                  <Gavel className="h-5 w-5" strokeWidth={1.6} />
+                </span>
+                <h2 className="font-serif text-3xl font-semibold text-ink">Contentieux</h2>
+              </div>
+              <div className="space-y-3">
+                {contentieuxServices.map((s) => (
+                  <div key={s} className="flex items-start gap-3 rounded-xl bg-background border border-border p-4">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <span className="text-foreground">{s}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* AVANTAGES */}
       <section className="section-pad">
         <div className="container-page">
           <h2 className="font-serif text-4xl font-semibold text-ink">
-            Pourquoi choisir JURIS-CONSULTANT ?
+            Pourquoi choisir Cabinet JurisConsultants ?
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[
               "Analyse approfondie des dossiers",
               "Stratégie adaptée à chaque litige",
-              "Accompagnement personnalisé",
+              "Accompagnement de la phase amiable à la phase judiciaire",
               "Recherche prioritaire de solutions efficaces",
               "Suivi rigoureux des procédures",
               "Protection des intérêts du client",
@@ -136,7 +156,6 @@ function ContentieuxPage() {
         </div>
       </section>
 
-      {/* PROCESSUS */}
       <section className="section-pad bg-secondary">
         <div className="container-page">
           <h2 className="font-serif text-4xl font-semibold text-ink">
@@ -145,54 +164,26 @@ function ContentieuxPage() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-4">
             {[
-              {
-                step: "01",
-                title: "Analyse",
-                desc: "Étude complète du dossier.",
-              },
-              {
-                step: "02",
-                title: "Stratégie",
-                desc: "Définition de la meilleure approche.",
-              },
-              {
-                step: "03",
-                title: "Action",
-                desc: "Négociation ou procédure judiciaire.",
-              },
-              {
-                step: "04",
-                title: "Suivi",
-                desc: "Accompagnement jusqu'à la résolution.",
-              },
+              { step: "01", title: "Analyse", desc: "Étude complète du dossier." },
+              { step: "02", title: "Stratégie", desc: "Définition de la meilleure approche." },
+              { step: "03", title: "Action", desc: "Négociation ou procédure judiciaire." },
+              { step: "04", title: "Suivi", desc: "Accompagnement jusqu'à la résolution." },
             ].map((item) => (
-              <div
-                key={item.step}
-                className="rounded-2xl bg-background p-6"
-              >
-                <div className="font-serif text-5xl text-primary/30">
-                  {item.step}
-                </div>
-
-                <h3 className="mt-4 font-serif text-2xl font-semibold text-ink">
-                  {item.title}
-                </h3>
-
-                <p className="mt-3 text-sm text-muted-foreground">
-                  {item.desc}
-                </p>
+              <div key={item.step} className="rounded-2xl bg-background p-6">
+                <div className="font-serif text-5xl text-primary/30">{item.step}</div>
+                <h3 className="mt-4 font-serif text-2xl font-semibold text-ink">{item.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="section-pad">
         <div className="container-page">
           <div className="rounded-3xl bg-[var(--gradient-ink)] p-12 text-center">
             <h2 className="font-serif text-4xl font-semibold text-background">
-              Vous êtes confronté à un litige ?
+              Vous êtes confronté à un litige ou un impayé ?
             </h2>
 
             <p className="mt-4 text-background/80 max-w-2xl mx-auto">
@@ -201,7 +192,7 @@ function ContentieuxPage() {
             </p>
 
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet%20JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary mt-8 inline-flex"

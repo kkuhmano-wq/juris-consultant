@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/lib/client-auth";
 
 function NotFoundComponent() {
   return (
@@ -77,14 +79,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "JURIS-CONSULTANT — Conseil Juridique & Fiscal" },
+      { title: "Cabinet JurisConsultants — Conseil Juridique & Fiscal" },
       {
         name: "description",
         content:
           "Cabinet de conseil juridique et fiscal. Accompagnement des entreprises, commerçants, travailleurs et investisseurs.",
       },
-      { name: "author", content: "JURIS-CONSULTANT" },
-      { property: "og:site_name", content: "JURIS-CONSULTANT" },
+      { name: "author", content: "Cabinet JurisConsultants" },
+      { property: "og:site_name", content: "Cabinet JurisConsultants" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -123,8 +125,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AuthProvider>
+        <Outlet />
+      </AuthProvider>
+      <Toaster />
     </QueryClientProvider>
   );
 }

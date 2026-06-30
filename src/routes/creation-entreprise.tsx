@@ -8,7 +8,7 @@ export const Route = createFileRoute("/creation-entreprise")({
     meta: [
       {
         title:
-          "Création d'Entreprise | JURIS-CONSULTANT - Conseil Juridique & Fiscal",
+          "Création d'Entreprise | Cabinet JurisConsultants - Conseil Juridique & Fiscal",
       },
       {
         name: "description",
@@ -50,7 +50,7 @@ function CreationEntreprisePage() {
 
           <div className="mt-8">
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -77,7 +77,7 @@ function CreationEntreprisePage() {
           </p>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            JURIS-CONSULTANT accompagne les entrepreneurs à chaque étape afin de
+            Cabinet JurisConsultants accompagne les entrepreneurs à chaque étape afin de
             sécuriser leur projet et leur permettre de démarrer leur activité en
             toute sérénité.
           </p>
@@ -201,7 +201,7 @@ function CreationEntreprisePage() {
             </p>
 
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary mt-8 inline-flex"

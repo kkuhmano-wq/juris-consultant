@@ -8,13 +8,13 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — JURIS-CONSULTANT" },
+      { title: "Contact — Cabinet JurisConsultants" },
       {
         name: "description",
         content:
-          "Contactez JURIS-CONSULTANT pour un rendez-vous. Téléphone, WhatsApp, e-mail, adresse et horaires.",
+          "Contactez Cabinet JurisConsultants pour un rendez-vous. Téléphone, WhatsApp, e-mail, adresse et horaires.",
       },
-      { property: "og:title", content: "Contact — JURIS-CONSULTANT" },
+      { property: "og:title", content: "Contact — Cabinet JurisConsultants" },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -204,7 +204,7 @@ const [loading, setLoading] = useState(false);
         <div className="container-page">
           <div className="overflow-hidden rounded-2xl border border-border">
             <iframe
-              title="Localisation JURIS-CONSULTANT"
+              title="Localisation Cabinet JurisConsultants"
               src="https://www.google.com/maps?q=Abidjan%2C%20C%C3%B4te%20d'Ivoire&output=embed"
               width="100%"
               height="420"

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/conseil-fiscal")({
     meta: [
       {
         title:
-          "Conseil Fiscal | JURIS-CONSULTANT - Conseil Juridique & Fiscal",
+          "Conseil Fiscal | Cabinet JurisConsultants - Conseil Juridique & Fiscal",
       },
       {
         name: "description",
@@ -52,7 +52,7 @@ function ConseilFiscalPage() {
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -78,7 +78,7 @@ function ConseilFiscalPage() {
           </p>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            JURIS-CONSULTANT vous accompagne dans la compréhension de vos
+            Cabinet JurisConsultants vous accompagne dans la compréhension de vos
             obligations fiscales, l'optimisation de votre charge fiscale et la
             sécurisation de vos opérations afin de garantir la pérennité de vos
             activités.
@@ -151,7 +151,7 @@ function ConseilFiscalPage() {
             </p>
 
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary mt-8 inline-flex"

@@ -7,13 +7,13 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 export const Route = createFileRoute("/actualites")({
   head: () => ({
     meta: [
-      { title: "Actualités — JURIS-CONSULTANT" },
+      { title: "Actualités — Cabinet JurisConsultants" },
       {
         name: "description",
         content:
           "Actualités, analyses et veille en fiscalité, droit des affaires, droit du travail et réglementation.",
       },
-      { property: "og:title", content: "Actualités — JURIS-CONSULTANT" },
+      { property: "og:title", content: "Actualités — Cabinet JurisConsultants" },
       { property: "og:url", content: "/actualites" },
     ],
     links: [{ rel: "canonical", href: "/actualites" }],
@@ -34,7 +34,7 @@ function ActualitesPage() {
   const [activeCat, setActiveCat] = useState<string | null>(null);
 
   useEffect(() => {
-    getPosts({}).then(setPosts).catch(() => {});
+    getPosts().then(setPosts).catch(() => {});
   }, []);
 
   const categories = [...new Set([...defaultCategories, ...posts.map((p) => p.cat)])];

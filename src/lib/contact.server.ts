@@ -22,7 +22,7 @@ export const sendContactEmail = createServerFn({
       to: "kkuhmano@gmail.com",
       subject: `Nouveau message : ${data.subject}`,
       html: `
-        <h2>Nouveau message depuis JURIS-CONSULTANT</h2>
+        <h2>Nouveau message depuis Cabinet JurisConsultants</h2>
         <p><strong>Nom :</strong> ${data.name}</p>
         <p><strong>Email :</strong> ${data.email}</p>
         <p><strong>Téléphone :</strong> ${data.phone}</p>
@@ -53,7 +53,7 @@ export const sendContactEmailAndSave = createServerFn({ method: "POST" })
         to: "kkuhmano@gmail.com",
         subject: `Nouveau prospect : ${data.subject || data.name}`,
         html: `
-          <h2>Nouveau prospect depuis JURIS-CONSULTANT</h2>
+          <h2>Nouveau prospect depuis Cabinet JurisConsultants</h2>
           <p><strong>Nom :</strong> ${data.name}</p>
           <p><strong>Email :</strong> ${data.email}</p>
           <p><strong>Téléphone :</strong> ${data.phone || "—"}</p>

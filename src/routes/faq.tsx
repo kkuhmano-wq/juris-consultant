@@ -13,13 +13,13 @@ import {
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ — JURIS-CONSULTANT" },
+      { title: "FAQ — Cabinet JurisConsultants" },
       {
         name: "description",
         content:
           "Réponses aux questions fréquentes : création d'entreprise, contrôle fiscal, recouvrement, mise en conformité, contrats.",
       },
-      { property: "og:title", content: "FAQ — JURIS-CONSULTANT" },
+      { property: "og:title", content: "FAQ — Cabinet JurisConsultants" },
       { property: "og:url", content: "/faq" },
     ],
     links: [{ rel: "canonical", href: "/faq" }],
@@ -31,7 +31,7 @@ function FaqPage() {
   const [faq, setFaq] = useState<any[]>([]);
 
   useEffect(() => {
-    getFaq({}).then(setFaq).catch(() => {});
+    getFaq().then(setFaq).catch(() => {});
   }, []);
 
   return (

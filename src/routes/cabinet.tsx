@@ -8,13 +8,13 @@ import { Award, Heart, Lock, Sparkles, Users } from "lucide-react";
 export const Route = createFileRoute("/cabinet")({
   head: () => ({
     meta: [
-      { title: "Le Cabinet — JURIS-CONSULTANT" },
+      { title: "Le Cabinet — Cabinet JurisConsultants" },
       {
         name: "description",
         content:
-          "Découvrez JURIS-CONSULTANT : mission, vision, valeurs et fondateur du cabinet de conseil juridique et fiscal.",
+          "Découvrez Cabinet JurisConsultants : mission, vision, valeurs et fondateur du cabinet de conseil juridique et fiscal.",
       },
-      { property: "og:title", content: "Le Cabinet — JURIS-CONSULTANT" },
+      { property: "og:title", content: "Le Cabinet — Cabinet JurisConsultants" },
       { property: "og:url", content: "/cabinet" },
     ],
     links: [{ rel: "canonical", href: "/cabinet" }],
@@ -42,7 +42,7 @@ function CabinetPage() {
             Qui sommes-nous&nbsp;?
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            JURIS-CONSULTANT est un cabinet spécialisé en conseil juridique et fiscal. Nous mettons
+            Cabinet JurisConsultants est un cabinet spécialisé en conseil juridique et fiscal. Nous mettons
             notre expertise au service de la sécurité et de la performance de nos clients.
           </p>
         </div>
@@ -66,7 +66,7 @@ function CabinetPage() {
 </h2>
 
 <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-  JURIS-CONSULTANT est né de la volonté d'accompagner les entreprises,
+  Cabinet JurisConsultants est né de la volonté d'accompagner les entreprises,
   commerçants, investisseurs et travailleurs dans un environnement juridique
   et fiscal de plus en plus complexe.
 </p>
@@ -238,7 +238,7 @@ function CabinetPage() {
               Une vision exigeante du conseil.
             </h2>
             <p className="mt-6 text-muted-foreground">
-              Le fondateur de JURIS-CONSULTANT met au service de ses clients une expérience
+              Le fondateur de Cabinet JurisConsultants met au service de ses clients une expérience
               reconnue en droit des affaires, fiscalité et droit social. Sa conviction&nbsp;: chaque
               décision juridique ou fiscale doit être un levier de performance et de sérénité.
             </p>
@@ -263,11 +263,11 @@ function CabinetPage() {
 
   <p className="mt-5 max-w-2xl mx-auto text-background/80">
     Que vous soyez entrepreneur, commerçant, investisseur ou travailleur,
-    JURIS-CONSULTANT vous accompagne dans vos décisions juridiques et fiscales.
+    Cabinet JurisConsultants vous accompagne dans vos décisions juridiques et fiscales.
   </p>
 
   <a
-    href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+    href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
     target="_blank"
     rel="noopener noreferrer"
     className="btn-primary mt-8 inline-flex"

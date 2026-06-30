@@ -1,5 +1,6 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 import { requireAuth, getPosts, savePost, deletePost } from "@/lib/admin.server";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -12,7 +13,7 @@ function getToken(): string | null {
 export const Route = createFileRoute("/admin-actualites")({
   head: () => ({
     meta: [
-      { title: "Gestion Actualités — JURIS-CONSULTANT" },
+      { title: "Gestion Actualités — Cabinet JurisConsultants" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -38,17 +39,25 @@ function formatDateDisplay(dateStr: string) {
 }
 
 function AdminActualitesPage() {
-  const router = useRouter();
   const [authed, setAuthed] = useState<boolean | null>(null);
   const [posts, setPosts] = useState<any[]>([]);
   const [editing, setEditing] = useState<any | null>(null);
   const [saving, setSaving] = useState(false);
 
+  async function loadPosts() {
+    try {
+      const p = await getPosts();
+      setPosts(p);
+    } catch {
+      toast.error("Erreur lors du chargement des articles");
+    }
+  }
+
   useEffect(() => {
     const token = getToken();
     if (!token) { setAuthed(false); return; }
     requireAuth({ data: { token } }).then((r) => setAuthed(r.authenticated));
-    getPosts({}).then(setPosts);
+    loadPosts();
   }, []);
 
   async function handleSave(e: React.FormEvent) {
@@ -71,9 +80,11 @@ function AdminActualitesPage() {
       });
       setEditing(null);
       form.reset();
-      getPosts({}).then(setPosts);
+      toast.success(editing?.id ? "Article modifié avec succès" : "Article publié avec succès");
+      await loadPosts();
     } catch (err) {
       console.error(err);
+      toast.error("Erreur lors de l'enregistrement");
     } finally {
       setSaving(false);
     }
@@ -81,8 +92,13 @@ function AdminActualitesPage() {
 
   async function handleDelete(id: string) {
     if (!confirm("Supprimer cet article ?")) return;
-    await deletePost({ data: { token: getToken() || "", id } });
-    setPosts((prev) => prev.filter((p) => p.id !== id));
+    try {
+      await deletePost({ data: { token: getToken() || "", id } });
+      setPosts((prev) => prev.filter((p) => p.id !== id));
+      toast.success("Article supprimé");
+    } catch {
+      toast.error("Erreur lors de la suppression");
+    }
   }
 
   if (authed === false) {

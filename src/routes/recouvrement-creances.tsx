@@ -1,23 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, HandCoins, CheckCircle2 } from "lucide-react";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/recouvrement-creances")({
-  head: () => ({
-    meta: [
-      {
-        title:
-          "Recouvrement de Créances | JURIS-CONSULTANT - Conseil Juridique & Fiscal",
-      },
-      {
-        name: "description",
-        content:
-          "Recouvrement amiable et judiciaire de créances. Mise en demeure, négociation, procédures judiciaires et exécution des décisions.",
-      },
-    ],
-  }),
-  component: RecouvrementPage,
+  beforeLoad: () => {
+    throw redirect({ to: "/contentieux" });
+  },
 });
 
 const services = [
@@ -51,7 +37,7 @@ function RecouvrementPage() {
 
           <div className="mt-8">
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -77,7 +63,7 @@ function RecouvrementPage() {
           </p>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            JURIS-CONSULTANT vous accompagne dans toutes les étapes du
+            Cabinet JurisConsultants vous accompagne dans toutes les étapes du
             recouvrement, depuis les démarches amiables jusqu'aux procédures
             judiciaires, afin de défendre efficacement vos intérêts financiers.
           </p>
@@ -200,7 +186,7 @@ function RecouvrementPage() {
             </p>
 
             <a
-              href="https://wa.me/2250789853607?text=Bonjour%20JURIS-CONSULTANT,%20je%20souhaite%20obtenir%20un%20rendez-vous."
+              href="https://wa.me/2250789853607?text=Bonjour%20Cabinet JurisConsultants,%20je%20souhaite%20obtenir%20un%20rendez-vous."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary mt-8 inline-flex"

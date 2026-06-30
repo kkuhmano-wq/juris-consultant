@@ -10,26 +10,56 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RessourcesHumainesRouteImport } from './routes/ressources-humaines'
 import { Route as RecouvrementCreancesRouteImport } from './routes/recouvrement-creances'
 import { Route as ProspectsRouteImport } from './routes/prospects'
+import { Route as PatrimoineProprieteRouteImport } from './routes/patrimoine-propriete'
 import { Route as OperationsComplexesRouteImport } from './routes/operations-complexes'
+import { Route as FormationRouteImport } from './routes/formation'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ExpertisesRouteImport } from './routes/expertises'
+import { Route as EspaceMembresRouteImport } from './routes/espace-membres'
+import { Route as EspaceClientRouteImport } from './routes/espace-client'
+import { Route as DeveloppementTerritorialRouteImport } from './routes/developpement-territorial'
+import { Route as CybersecuriteJuridiqueRouteImport } from './routes/cybersecurite-juridique'
 import { Route as CreationEntrepriseRouteImport } from './routes/creation-entreprise'
 import { Route as ContentieuxRouteImport } from './routes/contentieux'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConseilJuridiqueRouteImport } from './routes/conseil-juridique'
 import { Route as ConseilFiscalRouteImport } from './routes/conseil-fiscal'
+import { Route as ConnexionRouteImport } from './routes/connexion'
 import { Route as CabinetRouteImport } from './routes/cabinet'
 import { Route as AdminFaqRouteImport } from './routes/admin-faq'
+import { Route as AdminClientsRouteImport } from './routes/admin-clients'
 import { Route as AdminActualitesRouteImport } from './routes/admin-actualites'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EspaceMembresIndexRouteImport } from './routes/espace-membres.index'
+import { Route as EspaceClientIndexRouteImport } from './routes/espace-client.index'
+import { Route as EspaceMembresTachesRouteImport } from './routes/espace-membres.taches'
+import { Route as EspaceMembresMessagerieRouteImport } from './routes/espace-membres.messagerie'
+import { Route as EspaceMembresLoginRouteImport } from './routes/espace-membres.login'
+import { Route as EspaceMembresDossiersRouteImport } from './routes/espace-membres.dossiers'
+import { Route as EspaceMembresBibliothequeRouteImport } from './routes/espace-membres.bibliotheque'
+import { Route as EspaceMembresAgendaRouteImport } from './routes/espace-membres.agenda'
+import { Route as EspaceMembresAdministrationRouteImport } from './routes/espace-membres.administration'
+import { Route as EspaceClientRendezVousRouteImport } from './routes/espace-client.rendez-vous'
+import { Route as EspaceClientProfilRouteImport } from './routes/espace-client.profil'
+import { Route as EspaceClientDossiersRouteImport } from './routes/espace-client.dossiers'
+import { Route as EspaceClientDocumentsRouteImport } from './routes/espace-client.documents'
+import { Route as EspaceMembresMessagerieIdRouteImport } from './routes/espace-membres.messagerie.$id'
+import { Route as EspaceMembresDossiersIdRouteImport } from './routes/espace-membres.dossiers.$id'
+import { Route as EspaceClientDossiersIdRouteImport } from './routes/espace-client.dossiers.$id'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RessourcesHumainesRoute = RessourcesHumainesRouteImport.update({
+  id: '/ressources-humaines',
+  path: '/ressources-humaines',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecouvrementCreancesRoute = RecouvrementCreancesRouteImport.update({
@@ -42,9 +72,19 @@ const ProspectsRoute = ProspectsRouteImport.update({
   path: '/prospects',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PatrimoineProprieteRoute = PatrimoineProprieteRouteImport.update({
+  id: '/patrimoine-propriete',
+  path: '/patrimoine-propriete',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OperationsComplexesRoute = OperationsComplexesRouteImport.update({
   id: '/operations-complexes',
   path: '/operations-complexes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormationRoute = FormationRouteImport.update({
+  id: '/formation',
+  path: '/formation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -55,6 +95,27 @@ const FaqRoute = FaqRouteImport.update({
 const ExpertisesRoute = ExpertisesRouteImport.update({
   id: '/expertises',
   path: '/expertises',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EspaceMembresRoute = EspaceMembresRouteImport.update({
+  id: '/espace-membres',
+  path: '/espace-membres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EspaceClientRoute = EspaceClientRouteImport.update({
+  id: '/espace-client',
+  path: '/espace-client',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeveloppementTerritorialRoute =
+  DeveloppementTerritorialRouteImport.update({
+    id: '/developpement-territorial',
+    path: '/developpement-territorial',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CybersecuriteJuridiqueRoute = CybersecuriteJuridiqueRouteImport.update({
+  id: '/cybersecurite-juridique',
+  path: '/cybersecurite-juridique',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreationEntrepriseRoute = CreationEntrepriseRouteImport.update({
@@ -82,6 +143,11 @@ const ConseilFiscalRoute = ConseilFiscalRouteImport.update({
   path: '/conseil-fiscal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConnexionRoute = ConnexionRouteImport.update({
+  id: '/connexion',
+  path: '/connexion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CabinetRoute = CabinetRouteImport.update({
   id: '/cabinet',
   path: '/cabinet',
@@ -90,6 +156,11 @@ const CabinetRoute = CabinetRouteImport.update({
 const AdminFaqRoute = AdminFaqRouteImport.update({
   id: '/admin-faq',
   path: '/admin-faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminClientsRoute = AdminClientsRouteImport.update({
+  id: '/admin-clients',
+  path: '/admin-clients',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminActualitesRoute = AdminActualitesRouteImport.update({
@@ -112,44 +183,175 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EspaceMembresIndexRoute = EspaceMembresIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EspaceMembresRoute,
+} as any)
+const EspaceClientIndexRoute = EspaceClientIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EspaceClientRoute,
+} as any)
+const EspaceMembresTachesRoute = EspaceMembresTachesRouteImport.update({
+  id: '/taches',
+  path: '/taches',
+  getParentRoute: () => EspaceMembresRoute,
+} as any)
+const EspaceMembresMessagerieRoute = EspaceMembresMessagerieRouteImport.update({
+  id: '/messagerie',
+  path: '/messagerie',
+  getParentRoute: () => EspaceMembresRoute,
+} as any)
+const EspaceMembresLoginRoute = EspaceMembresLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => EspaceMembresRoute,
+} as any)
+const EspaceMembresDossiersRoute = EspaceMembresDossiersRouteImport.update({
+  id: '/dossiers',
+  path: '/dossiers',
+  getParentRoute: () => EspaceMembresRoute,
+} as any)
+const EspaceMembresBibliothequeRoute =
+  EspaceMembresBibliothequeRouteImport.update({
+    id: '/bibliotheque',
+    path: '/bibliotheque',
+    getParentRoute: () => EspaceMembresRoute,
+  } as any)
+const EspaceMembresAgendaRoute = EspaceMembresAgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
+  getParentRoute: () => EspaceMembresRoute,
+} as any)
+const EspaceMembresAdministrationRoute =
+  EspaceMembresAdministrationRouteImport.update({
+    id: '/administration',
+    path: '/administration',
+    getParentRoute: () => EspaceMembresRoute,
+  } as any)
+const EspaceClientRendezVousRoute = EspaceClientRendezVousRouteImport.update({
+  id: '/rendez-vous',
+  path: '/rendez-vous',
+  getParentRoute: () => EspaceClientRoute,
+} as any)
+const EspaceClientProfilRoute = EspaceClientProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => EspaceClientRoute,
+} as any)
+const EspaceClientDossiersRoute = EspaceClientDossiersRouteImport.update({
+  id: '/dossiers',
+  path: '/dossiers',
+  getParentRoute: () => EspaceClientRoute,
+} as any)
+const EspaceClientDocumentsRoute = EspaceClientDocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => EspaceClientRoute,
+} as any)
+const EspaceMembresMessagerieIdRoute =
+  EspaceMembresMessagerieIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => EspaceMembresMessagerieRoute,
+  } as any)
+const EspaceMembresDossiersIdRoute = EspaceMembresDossiersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => EspaceMembresDossiersRoute,
+} as any)
+const EspaceClientDossiersIdRoute = EspaceClientDossiersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => EspaceClientDossiersRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/actualites': typeof ActualitesRoute
   '/admin': typeof AdminRoute
   '/admin-actualites': typeof AdminActualitesRoute
+  '/admin-clients': typeof AdminClientsRoute
   '/admin-faq': typeof AdminFaqRoute
   '/cabinet': typeof CabinetRoute
+  '/connexion': typeof ConnexionRoute
   '/conseil-fiscal': typeof ConseilFiscalRoute
   '/conseil-juridique': typeof ConseilJuridiqueRoute
   '/contact': typeof ContactRoute
   '/contentieux': typeof ContentieuxRoute
   '/creation-entreprise': typeof CreationEntrepriseRoute
+  '/cybersecurite-juridique': typeof CybersecuriteJuridiqueRoute
+  '/developpement-territorial': typeof DeveloppementTerritorialRoute
+  '/espace-client': typeof EspaceClientRouteWithChildren
+  '/espace-membres': typeof EspaceMembresRouteWithChildren
   '/expertises': typeof ExpertisesRoute
   '/faq': typeof FaqRoute
+  '/formation': typeof FormationRoute
   '/operations-complexes': typeof OperationsComplexesRoute
+  '/patrimoine-propriete': typeof PatrimoineProprieteRoute
   '/prospects': typeof ProspectsRoute
   '/recouvrement-creances': typeof RecouvrementCreancesRoute
+  '/ressources-humaines': typeof RessourcesHumainesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/espace-client/documents': typeof EspaceClientDocumentsRoute
+  '/espace-client/dossiers': typeof EspaceClientDossiersRouteWithChildren
+  '/espace-client/profil': typeof EspaceClientProfilRoute
+  '/espace-client/rendez-vous': typeof EspaceClientRendezVousRoute
+  '/espace-membres/administration': typeof EspaceMembresAdministrationRoute
+  '/espace-membres/agenda': typeof EspaceMembresAgendaRoute
+  '/espace-membres/bibliotheque': typeof EspaceMembresBibliothequeRoute
+  '/espace-membres/dossiers': typeof EspaceMembresDossiersRouteWithChildren
+  '/espace-membres/login': typeof EspaceMembresLoginRoute
+  '/espace-membres/messagerie': typeof EspaceMembresMessagerieRouteWithChildren
+  '/espace-membres/taches': typeof EspaceMembresTachesRoute
+  '/espace-client/': typeof EspaceClientIndexRoute
+  '/espace-membres/': typeof EspaceMembresIndexRoute
+  '/espace-client/dossiers/$id': typeof EspaceClientDossiersIdRoute
+  '/espace-membres/dossiers/$id': typeof EspaceMembresDossiersIdRoute
+  '/espace-membres/messagerie/$id': typeof EspaceMembresMessagerieIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/actualites': typeof ActualitesRoute
   '/admin': typeof AdminRoute
   '/admin-actualites': typeof AdminActualitesRoute
+  '/admin-clients': typeof AdminClientsRoute
   '/admin-faq': typeof AdminFaqRoute
   '/cabinet': typeof CabinetRoute
+  '/connexion': typeof ConnexionRoute
   '/conseil-fiscal': typeof ConseilFiscalRoute
   '/conseil-juridique': typeof ConseilJuridiqueRoute
   '/contact': typeof ContactRoute
   '/contentieux': typeof ContentieuxRoute
   '/creation-entreprise': typeof CreationEntrepriseRoute
+  '/cybersecurite-juridique': typeof CybersecuriteJuridiqueRoute
+  '/developpement-territorial': typeof DeveloppementTerritorialRoute
   '/expertises': typeof ExpertisesRoute
   '/faq': typeof FaqRoute
+  '/formation': typeof FormationRoute
   '/operations-complexes': typeof OperationsComplexesRoute
+  '/patrimoine-propriete': typeof PatrimoineProprieteRoute
   '/prospects': typeof ProspectsRoute
   '/recouvrement-creances': typeof RecouvrementCreancesRoute
+  '/ressources-humaines': typeof RessourcesHumainesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/espace-client/documents': typeof EspaceClientDocumentsRoute
+  '/espace-client/dossiers': typeof EspaceClientDossiersRouteWithChildren
+  '/espace-client/profil': typeof EspaceClientProfilRoute
+  '/espace-client/rendez-vous': typeof EspaceClientRendezVousRoute
+  '/espace-membres/administration': typeof EspaceMembresAdministrationRoute
+  '/espace-membres/agenda': typeof EspaceMembresAgendaRoute
+  '/espace-membres/bibliotheque': typeof EspaceMembresBibliothequeRoute
+  '/espace-membres/dossiers': typeof EspaceMembresDossiersRouteWithChildren
+  '/espace-membres/login': typeof EspaceMembresLoginRoute
+  '/espace-membres/messagerie': typeof EspaceMembresMessagerieRouteWithChildren
+  '/espace-membres/taches': typeof EspaceMembresTachesRoute
+  '/espace-client': typeof EspaceClientIndexRoute
+  '/espace-membres': typeof EspaceMembresIndexRoute
+  '/espace-client/dossiers/$id': typeof EspaceClientDossiersIdRoute
+  '/espace-membres/dossiers/$id': typeof EspaceMembresDossiersIdRoute
+  '/espace-membres/messagerie/$id': typeof EspaceMembresMessagerieIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -157,19 +359,44 @@ export interface FileRoutesById {
   '/actualites': typeof ActualitesRoute
   '/admin': typeof AdminRoute
   '/admin-actualites': typeof AdminActualitesRoute
+  '/admin-clients': typeof AdminClientsRoute
   '/admin-faq': typeof AdminFaqRoute
   '/cabinet': typeof CabinetRoute
+  '/connexion': typeof ConnexionRoute
   '/conseil-fiscal': typeof ConseilFiscalRoute
   '/conseil-juridique': typeof ConseilJuridiqueRoute
   '/contact': typeof ContactRoute
   '/contentieux': typeof ContentieuxRoute
   '/creation-entreprise': typeof CreationEntrepriseRoute
+  '/cybersecurite-juridique': typeof CybersecuriteJuridiqueRoute
+  '/developpement-territorial': typeof DeveloppementTerritorialRoute
+  '/espace-client': typeof EspaceClientRouteWithChildren
+  '/espace-membres': typeof EspaceMembresRouteWithChildren
   '/expertises': typeof ExpertisesRoute
   '/faq': typeof FaqRoute
+  '/formation': typeof FormationRoute
   '/operations-complexes': typeof OperationsComplexesRoute
+  '/patrimoine-propriete': typeof PatrimoineProprieteRoute
   '/prospects': typeof ProspectsRoute
   '/recouvrement-creances': typeof RecouvrementCreancesRoute
+  '/ressources-humaines': typeof RessourcesHumainesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/espace-client/documents': typeof EspaceClientDocumentsRoute
+  '/espace-client/dossiers': typeof EspaceClientDossiersRouteWithChildren
+  '/espace-client/profil': typeof EspaceClientProfilRoute
+  '/espace-client/rendez-vous': typeof EspaceClientRendezVousRoute
+  '/espace-membres/administration': typeof EspaceMembresAdministrationRoute
+  '/espace-membres/agenda': typeof EspaceMembresAgendaRoute
+  '/espace-membres/bibliotheque': typeof EspaceMembresBibliothequeRoute
+  '/espace-membres/dossiers': typeof EspaceMembresDossiersRouteWithChildren
+  '/espace-membres/login': typeof EspaceMembresLoginRoute
+  '/espace-membres/messagerie': typeof EspaceMembresMessagerieRouteWithChildren
+  '/espace-membres/taches': typeof EspaceMembresTachesRoute
+  '/espace-client/': typeof EspaceClientIndexRoute
+  '/espace-membres/': typeof EspaceMembresIndexRoute
+  '/espace-client/dossiers/$id': typeof EspaceClientDossiersIdRoute
+  '/espace-membres/dossiers/$id': typeof EspaceMembresDossiersIdRoute
+  '/espace-membres/messagerie/$id': typeof EspaceMembresMessagerieIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -178,57 +405,130 @@ export interface FileRouteTypes {
     | '/actualites'
     | '/admin'
     | '/admin-actualites'
+    | '/admin-clients'
     | '/admin-faq'
     | '/cabinet'
+    | '/connexion'
     | '/conseil-fiscal'
     | '/conseil-juridique'
     | '/contact'
     | '/contentieux'
     | '/creation-entreprise'
+    | '/cybersecurite-juridique'
+    | '/developpement-territorial'
+    | '/espace-client'
+    | '/espace-membres'
     | '/expertises'
     | '/faq'
+    | '/formation'
     | '/operations-complexes'
+    | '/patrimoine-propriete'
     | '/prospects'
     | '/recouvrement-creances'
+    | '/ressources-humaines'
     | '/sitemap.xml'
+    | '/espace-client/documents'
+    | '/espace-client/dossiers'
+    | '/espace-client/profil'
+    | '/espace-client/rendez-vous'
+    | '/espace-membres/administration'
+    | '/espace-membres/agenda'
+    | '/espace-membres/bibliotheque'
+    | '/espace-membres/dossiers'
+    | '/espace-membres/login'
+    | '/espace-membres/messagerie'
+    | '/espace-membres/taches'
+    | '/espace-client/'
+    | '/espace-membres/'
+    | '/espace-client/dossiers/$id'
+    | '/espace-membres/dossiers/$id'
+    | '/espace-membres/messagerie/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/actualites'
     | '/admin'
     | '/admin-actualites'
+    | '/admin-clients'
     | '/admin-faq'
     | '/cabinet'
+    | '/connexion'
     | '/conseil-fiscal'
     | '/conseil-juridique'
     | '/contact'
     | '/contentieux'
     | '/creation-entreprise'
+    | '/cybersecurite-juridique'
+    | '/developpement-territorial'
     | '/expertises'
     | '/faq'
+    | '/formation'
     | '/operations-complexes'
+    | '/patrimoine-propriete'
     | '/prospects'
     | '/recouvrement-creances'
+    | '/ressources-humaines'
     | '/sitemap.xml'
+    | '/espace-client/documents'
+    | '/espace-client/dossiers'
+    | '/espace-client/profil'
+    | '/espace-client/rendez-vous'
+    | '/espace-membres/administration'
+    | '/espace-membres/agenda'
+    | '/espace-membres/bibliotheque'
+    | '/espace-membres/dossiers'
+    | '/espace-membres/login'
+    | '/espace-membres/messagerie'
+    | '/espace-membres/taches'
+    | '/espace-client'
+    | '/espace-membres'
+    | '/espace-client/dossiers/$id'
+    | '/espace-membres/dossiers/$id'
+    | '/espace-membres/messagerie/$id'
   id:
     | '__root__'
     | '/'
     | '/actualites'
     | '/admin'
     | '/admin-actualites'
+    | '/admin-clients'
     | '/admin-faq'
     | '/cabinet'
+    | '/connexion'
     | '/conseil-fiscal'
     | '/conseil-juridique'
     | '/contact'
     | '/contentieux'
     | '/creation-entreprise'
+    | '/cybersecurite-juridique'
+    | '/developpement-territorial'
+    | '/espace-client'
+    | '/espace-membres'
     | '/expertises'
     | '/faq'
+    | '/formation'
     | '/operations-complexes'
+    | '/patrimoine-propriete'
     | '/prospects'
     | '/recouvrement-creances'
+    | '/ressources-humaines'
     | '/sitemap.xml'
+    | '/espace-client/documents'
+    | '/espace-client/dossiers'
+    | '/espace-client/profil'
+    | '/espace-client/rendez-vous'
+    | '/espace-membres/administration'
+    | '/espace-membres/agenda'
+    | '/espace-membres/bibliotheque'
+    | '/espace-membres/dossiers'
+    | '/espace-membres/login'
+    | '/espace-membres/messagerie'
+    | '/espace-membres/taches'
+    | '/espace-client/'
+    | '/espace-membres/'
+    | '/espace-client/dossiers/$id'
+    | '/espace-membres/dossiers/$id'
+    | '/espace-membres/messagerie/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -236,18 +536,27 @@ export interface RootRouteChildren {
   ActualitesRoute: typeof ActualitesRoute
   AdminRoute: typeof AdminRoute
   AdminActualitesRoute: typeof AdminActualitesRoute
+  AdminClientsRoute: typeof AdminClientsRoute
   AdminFaqRoute: typeof AdminFaqRoute
   CabinetRoute: typeof CabinetRoute
+  ConnexionRoute: typeof ConnexionRoute
   ConseilFiscalRoute: typeof ConseilFiscalRoute
   ConseilJuridiqueRoute: typeof ConseilJuridiqueRoute
   ContactRoute: typeof ContactRoute
   ContentieuxRoute: typeof ContentieuxRoute
   CreationEntrepriseRoute: typeof CreationEntrepriseRoute
+  CybersecuriteJuridiqueRoute: typeof CybersecuriteJuridiqueRoute
+  DeveloppementTerritorialRoute: typeof DeveloppementTerritorialRoute
+  EspaceClientRoute: typeof EspaceClientRouteWithChildren
+  EspaceMembresRoute: typeof EspaceMembresRouteWithChildren
   ExpertisesRoute: typeof ExpertisesRoute
   FaqRoute: typeof FaqRoute
+  FormationRoute: typeof FormationRoute
   OperationsComplexesRoute: typeof OperationsComplexesRoute
+  PatrimoineProprieteRoute: typeof PatrimoineProprieteRoute
   ProspectsRoute: typeof ProspectsRoute
   RecouvrementCreancesRoute: typeof RecouvrementCreancesRoute
+  RessourcesHumainesRoute: typeof RessourcesHumainesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -258,6 +567,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ressources-humaines': {
+      id: '/ressources-humaines'
+      path: '/ressources-humaines'
+      fullPath: '/ressources-humaines'
+      preLoaderRoute: typeof RessourcesHumainesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recouvrement-creances': {
@@ -274,11 +590,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProspectsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/patrimoine-propriete': {
+      id: '/patrimoine-propriete'
+      path: '/patrimoine-propriete'
+      fullPath: '/patrimoine-propriete'
+      preLoaderRoute: typeof PatrimoineProprieteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/operations-complexes': {
       id: '/operations-complexes'
       path: '/operations-complexes'
       fullPath: '/operations-complexes'
       preLoaderRoute: typeof OperationsComplexesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/formation': {
+      id: '/formation'
+      path: '/formation'
+      fullPath: '/formation'
+      preLoaderRoute: typeof FormationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -293,6 +623,34 @@ declare module '@tanstack/react-router' {
       path: '/expertises'
       fullPath: '/expertises'
       preLoaderRoute: typeof ExpertisesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/espace-membres': {
+      id: '/espace-membres'
+      path: '/espace-membres'
+      fullPath: '/espace-membres'
+      preLoaderRoute: typeof EspaceMembresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/espace-client': {
+      id: '/espace-client'
+      path: '/espace-client'
+      fullPath: '/espace-client'
+      preLoaderRoute: typeof EspaceClientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/developpement-territorial': {
+      id: '/developpement-territorial'
+      path: '/developpement-territorial'
+      fullPath: '/developpement-territorial'
+      preLoaderRoute: typeof DeveloppementTerritorialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cybersecurite-juridique': {
+      id: '/cybersecurite-juridique'
+      path: '/cybersecurite-juridique'
+      fullPath: '/cybersecurite-juridique'
+      preLoaderRoute: typeof CybersecuriteJuridiqueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/creation-entreprise': {
@@ -330,6 +688,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConseilFiscalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/connexion': {
+      id: '/connexion'
+      path: '/connexion'
+      fullPath: '/connexion'
+      preLoaderRoute: typeof ConnexionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cabinet': {
       id: '/cabinet'
       path: '/cabinet'
@@ -342,6 +707,13 @@ declare module '@tanstack/react-router' {
       path: '/admin-faq'
       fullPath: '/admin-faq'
       preLoaderRoute: typeof AdminFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-clients': {
+      id: '/admin-clients'
+      path: '/admin-clients'
+      fullPath: '/admin-clients'
+      preLoaderRoute: typeof AdminClientsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin-actualites': {
@@ -372,26 +744,231 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/espace-membres/': {
+      id: '/espace-membres/'
+      path: '/'
+      fullPath: '/espace-membres/'
+      preLoaderRoute: typeof EspaceMembresIndexRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-client/': {
+      id: '/espace-client/'
+      path: '/'
+      fullPath: '/espace-client/'
+      preLoaderRoute: typeof EspaceClientIndexRouteImport
+      parentRoute: typeof EspaceClientRoute
+    }
+    '/espace-membres/taches': {
+      id: '/espace-membres/taches'
+      path: '/taches'
+      fullPath: '/espace-membres/taches'
+      preLoaderRoute: typeof EspaceMembresTachesRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-membres/messagerie': {
+      id: '/espace-membres/messagerie'
+      path: '/messagerie'
+      fullPath: '/espace-membres/messagerie'
+      preLoaderRoute: typeof EspaceMembresMessagerieRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-membres/login': {
+      id: '/espace-membres/login'
+      path: '/login'
+      fullPath: '/espace-membres/login'
+      preLoaderRoute: typeof EspaceMembresLoginRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-membres/dossiers': {
+      id: '/espace-membres/dossiers'
+      path: '/dossiers'
+      fullPath: '/espace-membres/dossiers'
+      preLoaderRoute: typeof EspaceMembresDossiersRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-membres/bibliotheque': {
+      id: '/espace-membres/bibliotheque'
+      path: '/bibliotheque'
+      fullPath: '/espace-membres/bibliotheque'
+      preLoaderRoute: typeof EspaceMembresBibliothequeRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-membres/agenda': {
+      id: '/espace-membres/agenda'
+      path: '/agenda'
+      fullPath: '/espace-membres/agenda'
+      preLoaderRoute: typeof EspaceMembresAgendaRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-membres/administration': {
+      id: '/espace-membres/administration'
+      path: '/administration'
+      fullPath: '/espace-membres/administration'
+      preLoaderRoute: typeof EspaceMembresAdministrationRouteImport
+      parentRoute: typeof EspaceMembresRoute
+    }
+    '/espace-client/rendez-vous': {
+      id: '/espace-client/rendez-vous'
+      path: '/rendez-vous'
+      fullPath: '/espace-client/rendez-vous'
+      preLoaderRoute: typeof EspaceClientRendezVousRouteImport
+      parentRoute: typeof EspaceClientRoute
+    }
+    '/espace-client/profil': {
+      id: '/espace-client/profil'
+      path: '/profil'
+      fullPath: '/espace-client/profil'
+      preLoaderRoute: typeof EspaceClientProfilRouteImport
+      parentRoute: typeof EspaceClientRoute
+    }
+    '/espace-client/dossiers': {
+      id: '/espace-client/dossiers'
+      path: '/dossiers'
+      fullPath: '/espace-client/dossiers'
+      preLoaderRoute: typeof EspaceClientDossiersRouteImport
+      parentRoute: typeof EspaceClientRoute
+    }
+    '/espace-client/documents': {
+      id: '/espace-client/documents'
+      path: '/documents'
+      fullPath: '/espace-client/documents'
+      preLoaderRoute: typeof EspaceClientDocumentsRouteImport
+      parentRoute: typeof EspaceClientRoute
+    }
+    '/espace-membres/messagerie/$id': {
+      id: '/espace-membres/messagerie/$id'
+      path: '/$id'
+      fullPath: '/espace-membres/messagerie/$id'
+      preLoaderRoute: typeof EspaceMembresMessagerieIdRouteImport
+      parentRoute: typeof EspaceMembresMessagerieRoute
+    }
+    '/espace-membres/dossiers/$id': {
+      id: '/espace-membres/dossiers/$id'
+      path: '/$id'
+      fullPath: '/espace-membres/dossiers/$id'
+      preLoaderRoute: typeof EspaceMembresDossiersIdRouteImport
+      parentRoute: typeof EspaceMembresDossiersRoute
+    }
+    '/espace-client/dossiers/$id': {
+      id: '/espace-client/dossiers/$id'
+      path: '/$id'
+      fullPath: '/espace-client/dossiers/$id'
+      preLoaderRoute: typeof EspaceClientDossiersIdRouteImport
+      parentRoute: typeof EspaceClientDossiersRoute
+    }
   }
 }
+
+interface EspaceClientDossiersRouteChildren {
+  EspaceClientDossiersIdRoute: typeof EspaceClientDossiersIdRoute
+}
+
+const EspaceClientDossiersRouteChildren: EspaceClientDossiersRouteChildren = {
+  EspaceClientDossiersIdRoute: EspaceClientDossiersIdRoute,
+}
+
+const EspaceClientDossiersRouteWithChildren =
+  EspaceClientDossiersRoute._addFileChildren(EspaceClientDossiersRouteChildren)
+
+interface EspaceClientRouteChildren {
+  EspaceClientDocumentsRoute: typeof EspaceClientDocumentsRoute
+  EspaceClientDossiersRoute: typeof EspaceClientDossiersRouteWithChildren
+  EspaceClientProfilRoute: typeof EspaceClientProfilRoute
+  EspaceClientRendezVousRoute: typeof EspaceClientRendezVousRoute
+  EspaceClientIndexRoute: typeof EspaceClientIndexRoute
+}
+
+const EspaceClientRouteChildren: EspaceClientRouteChildren = {
+  EspaceClientDocumentsRoute: EspaceClientDocumentsRoute,
+  EspaceClientDossiersRoute: EspaceClientDossiersRouteWithChildren,
+  EspaceClientProfilRoute: EspaceClientProfilRoute,
+  EspaceClientRendezVousRoute: EspaceClientRendezVousRoute,
+  EspaceClientIndexRoute: EspaceClientIndexRoute,
+}
+
+const EspaceClientRouteWithChildren = EspaceClientRoute._addFileChildren(
+  EspaceClientRouteChildren,
+)
+
+interface EspaceMembresDossiersRouteChildren {
+  EspaceMembresDossiersIdRoute: typeof EspaceMembresDossiersIdRoute
+}
+
+const EspaceMembresDossiersRouteChildren: EspaceMembresDossiersRouteChildren = {
+  EspaceMembresDossiersIdRoute: EspaceMembresDossiersIdRoute,
+}
+
+const EspaceMembresDossiersRouteWithChildren =
+  EspaceMembresDossiersRoute._addFileChildren(
+    EspaceMembresDossiersRouteChildren,
+  )
+
+interface EspaceMembresMessagerieRouteChildren {
+  EspaceMembresMessagerieIdRoute: typeof EspaceMembresMessagerieIdRoute
+}
+
+const EspaceMembresMessagerieRouteChildren: EspaceMembresMessagerieRouteChildren =
+  {
+    EspaceMembresMessagerieIdRoute: EspaceMembresMessagerieIdRoute,
+  }
+
+const EspaceMembresMessagerieRouteWithChildren =
+  EspaceMembresMessagerieRoute._addFileChildren(
+    EspaceMembresMessagerieRouteChildren,
+  )
+
+interface EspaceMembresRouteChildren {
+  EspaceMembresAdministrationRoute: typeof EspaceMembresAdministrationRoute
+  EspaceMembresAgendaRoute: typeof EspaceMembresAgendaRoute
+  EspaceMembresBibliothequeRoute: typeof EspaceMembresBibliothequeRoute
+  EspaceMembresDossiersRoute: typeof EspaceMembresDossiersRouteWithChildren
+  EspaceMembresLoginRoute: typeof EspaceMembresLoginRoute
+  EspaceMembresMessagerieRoute: typeof EspaceMembresMessagerieRouteWithChildren
+  EspaceMembresTachesRoute: typeof EspaceMembresTachesRoute
+  EspaceMembresIndexRoute: typeof EspaceMembresIndexRoute
+}
+
+const EspaceMembresRouteChildren: EspaceMembresRouteChildren = {
+  EspaceMembresAdministrationRoute: EspaceMembresAdministrationRoute,
+  EspaceMembresAgendaRoute: EspaceMembresAgendaRoute,
+  EspaceMembresBibliothequeRoute: EspaceMembresBibliothequeRoute,
+  EspaceMembresDossiersRoute: EspaceMembresDossiersRouteWithChildren,
+  EspaceMembresLoginRoute: EspaceMembresLoginRoute,
+  EspaceMembresMessagerieRoute: EspaceMembresMessagerieRouteWithChildren,
+  EspaceMembresTachesRoute: EspaceMembresTachesRoute,
+  EspaceMembresIndexRoute: EspaceMembresIndexRoute,
+}
+
+const EspaceMembresRouteWithChildren = EspaceMembresRoute._addFileChildren(
+  EspaceMembresRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ActualitesRoute: ActualitesRoute,
   AdminRoute: AdminRoute,
   AdminActualitesRoute: AdminActualitesRoute,
+  AdminClientsRoute: AdminClientsRoute,
   AdminFaqRoute: AdminFaqRoute,
   CabinetRoute: CabinetRoute,
+  ConnexionRoute: ConnexionRoute,
   ConseilFiscalRoute: ConseilFiscalRoute,
   ConseilJuridiqueRoute: ConseilJuridiqueRoute,
   ContactRoute: ContactRoute,
   ContentieuxRoute: ContentieuxRoute,
   CreationEntrepriseRoute: CreationEntrepriseRoute,
+  CybersecuriteJuridiqueRoute: CybersecuriteJuridiqueRoute,
+  DeveloppementTerritorialRoute: DeveloppementTerritorialRoute,
+  EspaceClientRoute: EspaceClientRouteWithChildren,
+  EspaceMembresRoute: EspaceMembresRouteWithChildren,
   ExpertisesRoute: ExpertisesRoute,
   FaqRoute: FaqRoute,
+  FormationRoute: FormationRoute,
   OperationsComplexesRoute: OperationsComplexesRoute,
+  PatrimoineProprieteRoute: PatrimoineProprieteRoute,
   ProspectsRoute: ProspectsRoute,
   RecouvrementCreancesRoute: RecouvrementCreancesRoute,
+  RessourcesHumainesRoute: RessourcesHumainesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
