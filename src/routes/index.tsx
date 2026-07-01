@@ -134,12 +134,7 @@ function HomePage() {
                 className="h-[34rem] w-full object-cover md:h-[40rem]"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-background p-5 shadow-[var(--shadow-soft)] md:block">
-              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Slogan</p>
-              <p className="mt-2 max-w-[14rem] font-serif text-base italic leading-snug text-ink">
-                « Anticiper les risques. Sécuriser vos activités. Optimiser vos décisions. »
-              </p>
-            </div>
+
           </div>
         </div>
       </section>
