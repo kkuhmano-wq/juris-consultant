@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import heroFounder from "@/assets/hero-founder.jpg";
+import creaCjc from "@/assets/Crea CJC.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -127,8 +127,8 @@ function HomePage() {
             <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/10" />
             <div className="overflow-hidden rounded-[1.5rem] shadow-[var(--shadow-elegant)]">
               <img
-                src={heroFounder}
-                alt="Fondateur du cabinet Cabinet JurisConsultants"
+                src={creaCjc}
+                alt="Cabinet JurisConsultants"
                 width={1080}
                 height={1600}
                 className="h-[34rem] w-full object-cover md:h-[40rem]"
